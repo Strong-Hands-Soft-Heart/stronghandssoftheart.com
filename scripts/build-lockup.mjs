@@ -7,7 +7,9 @@ const require = createRequire(import.meta.url);
 const fontkit = require('fontkit');
 const woff2 = require('wawoff2');
 
-const ttf = await woff2.decompress(readFileSync(new URL('../public/fonts/Unbounded-Variable.woff2', import.meta.url)));
+const ttf = await woff2.decompress(
+  readFileSync(new URL('../public/fonts/Unbounded-Variable.woff2', import.meta.url)),
+);
 const font = fontkit.create(Buffer.from(ttf)).getVariation({ wght: 700 });
 const cap = font.capHeight; // font units, 1000 per em
 const gap = 0.15 * cap; // the system's rule: 15% of the cap on each side of the mark
@@ -32,7 +34,10 @@ const two = letters('SH', markX + markSize + gap);
 const width = two.x;
 const pad = stroke;
 
-const svg = (ink, heart) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${-pad} ${-cap - pad} ${width + 2 * pad} ${cap + 2 * pad}" width="${Math.round((width + 2 * pad) / 10)}" height="${Math.round((cap + 2 * pad) / 10)}" role="img" aria-label="SHSH">
+const svg = (
+  ink,
+  heart,
+) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${-pad} ${-cap - pad} ${width + 2 * pad} ${cap + 2 * pad}" width="${Math.round((width + 2 * pad) / 10)}" height="${Math.round((cap + 2 * pad) / 10)}" role="img" aria-label="SHSH">
 <g fill="${ink}">${one.paths}${two.paths}</g>
 <g fill="none" stroke="${heart}" stroke-width="${stroke.toFixed(1)}" stroke-linejoin="miter">
 <polygon points="${markX + half},${cy - half} ${markX + markSize},${cy} ${markX + half},${cy + half} ${markX},${cy}"/>
@@ -41,7 +46,8 @@ const svg = (ink, heart) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${
 </svg>
 `;
 
-const out = (name, ink, heart) => writeFileSync(new URL(`../public/brand/${name}`, import.meta.url), svg(ink, heart));
+const out = (name, ink, heart) =>
+  writeFileSync(new URL(`../public/brand/${name}`, import.meta.url), svg(ink, heart));
 out('shsh-lockup.svg', '#0a0a0a', '#0a0a0a');
 out('shsh-lockup-heart.svg', '#0a0a0a', '#ff2f92');
 out('shsh-lockup-paper.svg', '#ffffff', '#ffffff');
