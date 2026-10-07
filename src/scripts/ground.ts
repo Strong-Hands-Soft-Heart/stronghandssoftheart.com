@@ -1,0 +1,139 @@
+// Mounts the Ground on every <canvas data-sh-ground>. Vanilla WebGL, no library.
+// Colours come from the design-system tokens on :root, so day and night both
+// work and a token change trickles down. Off under reduced motion (one still
+// frame), paused when off-screen or the tab is hidden, hidden when WebGL fails.
+import frag from '../../design-system/ground.frag?raw';
+
+const VERT = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.0,1.0);}';
+const FPS = 30;
+
+type Variant = 'paper' | 'deep';
+
+const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const dark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function token(name: string): [number, number, number] {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const hex = raw.startsWith('#') ? raw.slice(1) : '000000';
+  const full = hex.length === 3 ? hex.replace(/./g, (ch) => ch + ch) : hex;
+  const n = parseInt(full.slice(0, 6), 16);
+  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+}
+
+function palette(variant: Variant) {
+  return {
+    u_ground: token(variant === 'deep' ? '--air-deep' : '--paper'),
+    u_stroke: token(variant === 'deep' ? '--on-air-deep' : '--ink'),
+    u_accent: token('--earth'),
+    u_air: token('--air'),
+    u_earth: token('--earth'),
+    u_sun: token('--sun'),
+  };
+}
+
+function mount(canvas: HTMLCanvasElement) {
+  const variant: Variant = canvas.dataset.shGround === 'deep' ? 'deep' : 'paper';
+  const gl = canvas.getContext('webgl', { antialias: false, alpha: false, depth: false });
+  if (!gl) {
+    canvas.hidden = true;
+    return;
+  }
+
+  const compile = (type: number, src: string) => {
+    const shader = gl.createShader(type)!;
+    gl.shaderSource(shader, src);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
+      throw new Error(gl.getShaderInfoLog(shader) ?? 'shader');
+    return shader;
+  };
+
+  let program: WebGLProgram;
+  try {
+    program = gl.createProgram()!;
+    gl.attachShader(program, compile(gl.VERTEX_SHADER, VERT));
+    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, frag));
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error('link');
+  } catch {
+    canvas.hidden = true;
+    return;
+  }
+  gl.useProgram(program);
+
+  const buffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const a = gl.getAttribLocation(program, 'a');
+  gl.enableVertexAttribArray(a);
+  gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
+
+  const loc = (name: string) => gl.getUniformLocation(program, name);
+  const uRes = loc('u_res');
+  const uDpr = loc('u_dpr');
+  const uTime = loc('u_time');
+
+  const applyPalette = () => {
+    for (const [name, rgb] of Object.entries(palette(variant))) gl.uniform3fv(loc(name), rgb);
+  };
+
+  let dpr = 1;
+  const resize = () => {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
+    const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+    }
+    gl.viewport(0, 0, w, h);
+    gl.uniform2f(uRes, w, h);
+    gl.uniform1f(uDpr, dpr);
+  };
+
+  const start = performance.now();
+  const draw = () => {
+    gl.uniform1f(uTime, motion.matches ? 0 : (performance.now() - start) / 1000);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  };
+
+  let visible = false;
+  let frame = 0;
+  let last = 0;
+  const loop = (now: number) => {
+    frame = 0;
+    if (!visible || document.hidden || motion.matches) return;
+    if (now - last >= 1000 / FPS) {
+      last = now;
+      draw();
+    }
+    frame = requestAnimationFrame(loop);
+  };
+  const wake = () => {
+    if (!frame) frame = requestAnimationFrame(loop);
+  };
+  const still = () => {
+    resize();
+    applyPalette();
+    draw();
+    wake();
+  };
+
+  new ResizeObserver(still).observe(canvas);
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) wake();
+  }).observe(canvas);
+  document.addEventListener('visibilitychange', wake);
+  motion.addEventListener('change', still);
+  dark.addEventListener('change', still);
+  new MutationObserver(still).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+
+  still();
+}
+
+for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas[data-sh-ground]'))
+  mount(canvas);

@@ -1,5 +1,6 @@
 ---
 import Eyebrow from './Eyebrow.astro';
+import Ground from './Ground.astro';
 
 /** Eyebrow, a statement with one italic phrase in earth, a lead, and actions. Grain ground. */
 interface Props {
@@ -12,7 +13,8 @@ interface Props {
 const { eyebrow, title, emphasis, lead } = Astro.props;
 ---
 
-<section class="sh-hero">
+<section class="sh-hero sh-ground-host">
+  <Ground />
   <div class="sh-grain" aria-hidden="true"></div>
   <div class="sh-container">
     <div class="sh-hero__inner">

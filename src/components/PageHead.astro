@@ -1,6 +1,7 @@
 ---
 import Badge from './Badge.astro';
 import Eyebrow from './Eyebrow.astro';
+import Ground from './Ground.astro';
 
 /** Inner-page header: eyebrow, h1 with an optional status badge, a lead. Grain ground. */
 interface Props {
@@ -13,7 +14,8 @@ interface Props {
 const { eyebrow, title, badge, lead } = Astro.props;
 ---
 
-<section class="sh-page-head">
+<section class="sh-page-head sh-ground-host">
+  <Ground />
   <div class="sh-grain" aria-hidden="true"></div>
   <div class="sh-container" style="position:relative">
     <Eyebrow>{eyebrow}</Eyebrow>

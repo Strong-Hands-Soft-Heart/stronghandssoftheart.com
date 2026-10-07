@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Ground from '../components/Ground.astro';
 import Button from '../components/Button.astro';
 import ContactForm from '../components/ContactForm.astro';
 import CraftCard from '../components/CraftCard.astro';
@@ -129,7 +130,8 @@ import { reading, selectedWork, services, steps, testimonials } from '../data/co
     </div>
   </section>
 
-  <section class="sh-section sh-deep" id="contact">
+  <section class="sh-section sh-deep sh-ground-host" id="contact">
+    <Ground variant="deep" />
     <div class="sh-container">
       <div class="sh-section__head">
         <Eyebrow>Contact</Eyebrow>

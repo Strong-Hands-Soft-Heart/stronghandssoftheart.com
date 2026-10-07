@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Ground from '../components/Ground.astro';
 import Badge from '../components/Badge.astro';
 import BookCard from '../components/BookCard.astro';
 import Button from '../components/Button.astro';
@@ -77,7 +78,8 @@ const notes = await latestNotes(3);
     </div>
   </section>
 
-  <section class="sh-section sh-deep" id="updates">
+  <section class="sh-section sh-deep sh-ground-host" id="updates">
+    <Ground variant="deep" />
     <div class="sh-container">
       <div class="sh-section__head sh-reveal">
         <Eyebrow>Soap Updates</Eyebrow>
@@ -115,7 +117,8 @@ const notes = await latestNotes(3);
         <Eyebrow>The Founder Writes</Eyebrow>
         <h2 class="sh-h2">Notes, by Antonio</h2>
         <p class="sh-section__lead">
-          Notes is my own writing, separate from the company: fatherhood, philosophy, culture and work. The latest essays:
+          Notes is my own writing, separate from the company: fatherhood, philosophy, culture and
+          work. The latest essays:
         </p>
       </div>
       {notes.length > 0 && <NoteList notes={notes} />}

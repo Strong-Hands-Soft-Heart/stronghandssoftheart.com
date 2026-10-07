@@ -1,0 +1,14 @@
+---
+/**
+ * The Ground: the mark's geometry as a quiet, drifting ground behind a section.
+ * Put it first inside a `.sh-ground-host`; the grain layer goes after it and the
+ * content after that. `deep` uses the deep surface's tokens.
+ */
+interface Props {
+  variant?: 'paper' | 'deep';
+}
+
+const { variant = 'paper' } = Astro.props;
+---
+
+<canvas class="sh-ground" data-sh-ground={variant} aria-hidden="true"></canvas>

@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [1.3.0] - 2026-10-07
+
+- The Ground: a WebGL shader draws the mark's own geometry behind the hero, every page head and the deep call-to-action sections. A grid of diamond outlines with their equators, drifting and breathing; one horizon line in earth; a wash of air above and earth below; a trace of sun. Every colour is a design-system token, so day and night both work. Strokes stay between 5 and 14% so text keeps its contrast. One still frame under reduced motion; paused off-screen and when the tab is hidden; hidden without WebGL. About 6 KB of script, no library. The shader lives in the design system (`components/ground.frag`) and is copied to `design-system/ground.frag`.
+
 ## [1.2.0] - 2026-10-07
 
 - Notes is Antonio's own writing, not a company publication. The Notes page, the home section, the About page, the footer, llms.txt, and the site description now say so; Notes is no longer a card under "What I Make".

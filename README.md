@@ -8,6 +8,7 @@ Live: [www.stronghandssoftheart.com](https://www.stronghandssoftheart.com)
 
 - [Astro](https://astro.build) 7, static output, no adapter
 - Plain CSS from the SH&SH design system (`src/styles/shsh.css`); no CSS framework
+- The Ground: a WebGL fragment shader (`design-system/ground.frag`, a copy of the design system's) draws the mark's geometry behind the hero, page heads and deep sections; vanilla WebGL in `src/scripts/ground.ts`, no library
 - Self-hosted Fraunces and Source Serif 4 (`public/fonts/`)
 - Forms post straight to [Kit](https://kit.com) (email list) and [Formspree](https://formspree.io) (contact); no server code, no API keys
 - Deployed on Vercel

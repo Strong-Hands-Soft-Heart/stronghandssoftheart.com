@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Ground from '../components/Ground.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import PageHead from '../components/PageHead.astro';
 import SignupForm from '../components/SignupForm.astro';
@@ -42,7 +43,8 @@ import SignupForm from '../components/SignupForm.astro';
     </div>
   </section>
 
-  <section class="sh-section sh-deep" id="updates">
+  <section class="sh-section sh-deep sh-ground-host" id="updates">
+    <Ground variant="deep" />
     <div class="sh-container">
       <div class="sh-section__head">
         <Eyebrow>Soap Updates</Eyebrow>
