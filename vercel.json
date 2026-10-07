@@ -4,6 +4,12 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "consulting.stronghandssoftheart.com" }],
+      "destination": "https://www.stronghandssoftheart.com/consulting",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "consulting.stronghandssoftheart.com" }],
       "destination": "https://www.stronghandssoftheart.com/consulting",
