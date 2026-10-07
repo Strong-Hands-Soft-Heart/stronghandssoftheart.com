@@ -2,6 +2,11 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.1.2] - 2026-10-07
+
+- Fixed: every page's canonical link and `og:url` ended in `.html` (`/index.html`, `/consulting.html`), an address Vercel redirects. They now match the served URLs (`/`, `/consulting`). The layout strips `.html` and `/index`, because `build.format` is `file`.
+- The Organization in the structured data has an ID (`/#organization`), a Florida address region, and the GitHub organization. Its founder points at the Person ID that antoniwan.online defines (`https://antoniwan.online/#person`), so search engines can join the company, the founder and his writing.
+
 ## [2.1.1] - 2026-10-07
 
 - The two picture books' source links point at their new home in the company's GitHub organization, Strong-Hands-Soft-Heart. The company publishes and hosts the books, so their repos moved there.

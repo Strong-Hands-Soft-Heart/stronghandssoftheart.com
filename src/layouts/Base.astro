@@ -14,18 +14,23 @@ interface Props {
 
 const { title, description = SITE.description, lang = 'en' } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name}: soap, books and software`;
-const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', SITE.url).href;
+// build.format is 'file', so pathnames end in .html at build time; Vercel serves them without it.
+const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
+const canonical = new URL(cleanPath, SITE.url).href;
 const ogImage = new URL('/og.png', SITE.url).href;
 
 const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
   name: SITE.legalName,
   alternateName: 'SH&SH',
   url: SITE.url,
   logo: new URL('/brand/app-icon.svg', SITE.url).href,
   email: SITE.email,
-  founder: { '@type': 'Person', name: SITE.founder, url: SITE.founderUrl },
+  founder: { '@type': 'Person', '@id': SITE.founderId, name: SITE.founder, url: SITE.founderUrl },
+  address: { '@type': 'PostalAddress', addressRegion: 'FL', addressCountry: 'US' },
+  sameAs: [SITE.github],
 };
 ---
 

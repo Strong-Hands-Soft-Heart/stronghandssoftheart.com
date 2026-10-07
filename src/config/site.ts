@@ -7,6 +7,9 @@ export const SITE = {
   email: 'hello@stronghandssoftheart.com',
   founder: 'Antonio Rodríguez Martínez',
   founderUrl: 'https://antoniwan.online',
+  /** The founder's one ID in structured data; antoniwan.online holds the full Person. */
+  founderId: 'https://antoniwan.online/#person',
+  github: 'https://github.com/Strong-Hands-Soft-Heart',
 };
 
 /**
