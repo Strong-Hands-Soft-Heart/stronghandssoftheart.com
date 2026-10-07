@@ -2,6 +2,12 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [1.1.2] - 2026-10-07
+
+- The page no longer describes itself: the hero lead ("This page says what is ready…") is gone, and the hero reads "Soap, books and software. Made in Florida."
+- "One person, and the people I know" is gone from the hero and the network heading; the network section is titled "Professionals I Trust" and its lead starts with the relationships.
+- Soap: "What I Can Say Now" is now "What Each Label Will Carry".
+
 ## [1.1.1] - 2026-10-07
 
 - "Networking" is not a field: it is the whole network, the professionals Antonio trusts in the areas where he is not the expert. Removed from the grid; the copy says so, with his examples (a copywriter for the copy, a robotics expert for a signage job). Eight fields sit four by two on desktop.

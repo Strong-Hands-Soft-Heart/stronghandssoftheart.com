@@ -15,6 +15,6 @@ export const network = [
 ];
 
 export const networkLead =
-  'Strong Hands, Soft Heart is one person. Most projects need more than one. Over my career I have built relationships with professionals I trust in the areas where I am not the expert. When your project needs one of them, I bring them in or introduce you: a copywriter for the copy, a robotics expert for a signage job.';
+  'Over my career I have built relationships with professionals I trust in the areas where I am not the expert. When your project needs one of them, I bring them in or introduce you: a copywriter for the copy, a robotics expert for a signage job.';
 
 export const networkRule = 'When someone else does part of the work, I name them.';
