@@ -3,6 +3,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "consulting.stronghandssoftheart.com" }],
+      "destination": "https://www.stronghandssoftheart.com/consulting",
+      "permanent": true
+    },
     { "source": "/what-we-do", "destination": "/#what-i-make", "permanent": true },
     { "source": "/contact", "destination": "/consulting#contact", "permanent": false }
   ]
