@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.1.0] - 2026-10-07
+
+- Vercel Web Analytics: `@vercel/analytics` and its Astro component at the end of every page. It counts page views without cookies, beside Google Analytics. The privacy policy names it under third-party services.
+
 ## [2.0.0] - 2026-10-07
 
 The rebrand: white, black and strawberry; Unbounded and Geist; the Ground as entropy. Copy unchanged.

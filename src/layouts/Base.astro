@@ -2,6 +2,7 @@
 import '../styles/shsh.css';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import Analytics from '@vercel/analytics/astro';
 import { GA_ID, SITE } from '../config/site';
 
 interface Props {
@@ -87,6 +88,7 @@ const organization = {
       <slot />
     </main>
     <SiteFooter />
+    <Analytics />
     <script>
       import '../scripts/forms';
       import '../scripts/ground';
