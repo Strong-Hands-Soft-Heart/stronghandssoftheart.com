@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.2.0] - 2026-10-07
+
+- IndexNow: each Vercel production build sends every sitemap URL to IndexNow (Bing and the other IndexNow engines), as Notes does. `src/utils/indexNow.ts` runs after the sitemap is written, only when `VERCEL_ENV` is `production` (or `INDEXNOW_FORCE=1`), and only when the live site already serves the key file `public/371bfc24-dd96-4308-8494-9a995e795ebb.txt`. It tries `api.indexnow.org`, then `www.bing.com` on a 403. It never fails the build.
+
 ## [2.1.2] - 2026-10-07
 
 - Fixed: every page's canonical link and `og:url` ended in `.html` (`/index.html`, `/consulting.html`), an address Vercel redirects. They now match the served URLs (`/`, `/consulting`). The layout strips `.html` and `/index`, because `build.format` is `file`.
