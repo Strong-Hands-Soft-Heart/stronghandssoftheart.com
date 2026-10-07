@@ -1,0 +1,12 @@
+---
+/** Status in the exact vocabulary: Available, Free, In progress, Planned (with a date), Paused, Retired. */
+interface Props {
+  tone?: 'earth' | 'air';
+}
+
+const { tone = 'earth' } = Astro.props;
+---
+
+<span class:list={['sh-badge', tone === 'air' && 'sh-badge--air']}>
+  <slot />
+</span>

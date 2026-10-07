@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import NoteList from '../components/NoteList.astro';
+import PageHead from '../components/PageHead.astro';
+import { NOTES_URL } from '../config/site';
+import { latestNotes } from '../utils/notes';
+
+const notes = await latestNotes(8);
+---
+
+<Base
+  title="Notes"
+  description="Notes is the publication of Strong Hands, Soft Heart: essays by Antonio Rodríguez Martínez on fatherhood, philosophy, culture and work, free to read."
+>
+  <PageHead
+    eyebrow="The Publication"
+    title="Notes"
+    badge="Free"
+    lead="Notes is where I write: essays on fatherhood, philosophy, culture and work, and the recipes we cook at home. It is free to read at notes.antoniwan.online."
+  >
+    <div class="sh-hero__actions">
+      <Button href={NOTES_URL} arrow>
+        Read Notes
+      </Button>
+      <Button variant="outline" href={`${NOTES_URL}/rss.xml`} arrow>
+        RSS Feed
+      </Button>
+    </div>
+  </PageHead>
+
+  <section class="sh-section">
+    <div class="sh-container">
+      <div class="sh-section__head">
+        <h2 class="sh-h2">Latest Essays</h2>
+      </div>
+      {notes.length > 0 ? (
+        <NoteList notes={notes} />
+      ) : (
+        <p>
+          The list could not be loaded when this page was built. Read the essays at{' '}
+          <a href={NOTES_URL}>notes.antoniwan.online</a>.
+        </p>
+      )}
+      <div class="sh-hero__actions">
+        <Button variant="quiet" href={`${NOTES_URL}/everything`} arrow>
+          Every Post
+        </Button>
+      </div>
+    </div>
+  </section>
+</Base>

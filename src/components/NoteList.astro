@@ -1,0 +1,31 @@
+---
+import type { Note } from '../utils/notes';
+
+/** Essays from Notes: date, title, one-line summary. Hairlines between, no cards. */
+interface Props {
+  notes: Note[];
+}
+
+const { notes } = Astro.props;
+const format = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<ol class="sh-notes">
+  {notes.map((note) => (
+    <li class="sh-notes__item">
+      <a class="sh-notes__link" href={note.url}>
+        <time class="sh-notes__date" datetime={note.date.toISOString().slice(0, 10)}>
+          {format(note.date)}
+        </time>
+        <h3 class="sh-notes__title">{note.title}</h3>
+        {note.summary && <p class="sh-notes__summary">{note.summary}</p>}
+      </a>
+    </li>
+  ))}
+</ol>

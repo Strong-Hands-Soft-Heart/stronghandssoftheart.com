@@ -1,0 +1,88 @@
+---
+import '../styles/shsh.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { GA_ID, SITE } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Page language; product and book pages carry Spanish blocks marked lang="es". */
+  lang?: string;
+}
+
+const { title, description = SITE.description, lang = 'en' } = Astro.props;
+const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name}: soap, books and software`;
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', SITE.url).href;
+const ogImage = new URL('/og.png', SITE.url).href;
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.legalName,
+  alternateName: 'SH&SH',
+  url: SITE.url,
+  logo: new URL('/brand/app-icon.svg', SITE.url).href,
+  email: SITE.email,
+  founder: { '@type': 'Person', name: SITE.founder, url: SITE.founderUrl },
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="describedby" href="/llms.txt" />
+    <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c2740" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" href="/fonts/Fraunces-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/SourceSerif4-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organization)} />
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+    <script is:inline define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    </script>
+  </head>
+  <body>
+    <a class="sh-skip" href="#main">
+      Skip to content
+    </a>
+    <SiteHeader />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+    <script>
+      import '../scripts/forms';
+    </script>
+  </body>
+</html>

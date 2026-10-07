@@ -1,0 +1,25 @@
+---
+import Mark from './Mark.astro';
+import Wordmark from './Wordmark.astro';
+import { NAV } from '../config/site';
+
+/** Paper bar, hairline below, mark and full name, tracked uppercase nav. Not sticky. */
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header class="sh-header">
+  <div class="sh-container sh-header__bar">
+    <a class="sh-header__brand" href="/" aria-label="Strong Hands, Soft Heart, home">
+      <Mark size={24} />
+      <Wordmark />
+    </a>
+    <nav class="sh-header__nav" aria-label="Main">
+      {NAV.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

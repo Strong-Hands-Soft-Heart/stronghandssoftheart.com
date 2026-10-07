@@ -1,0 +1,64 @@
+---
+import Button from './Button.astro';
+import { FORMSPREE_FORM_ID, KIT_FORM_ID } from '../config/site';
+
+/**
+ * Email sign-up for soap and launch news. Posts to Kit when KIT_FORM_ID is set,
+ * otherwise to Formspree. Works without JavaScript; with it, the form answers in place.
+ */
+interface Props {
+  /** What the person signs up for, sent with the address. */
+  topic?: string;
+  label?: string;
+  button?: string;
+}
+
+const { topic = 'Soap and launch updates', label = 'Email', button = 'Get Updates' } = Astro.props;
+const kit = KIT_FORM_ID !== '';
+const action = kit
+  ? `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`
+  : `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
+const done = kit
+  ? 'Thank you. Check your inbox to confirm your email.'
+  : 'Thank you. You are on the list.';
+const fieldId = `signup-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<form class="sh-form" action={action} method="post" data-sh-form data-done={done}>
+  <div class="sh-form sh-form--inline" style="max-width:none">
+    <div class="sh-field">
+      <label class="sh-label-text" for={fieldId}>
+        {label}
+      </label>
+      <input
+        class="sh-input"
+        id={fieldId}
+        type="email"
+        name={kit ? 'email_address' : 'email'}
+        autocomplete="email"
+        required
+        placeholder="you@example.com"
+      />
+    </div>
+    <Button type="submit">{button}</Button>
+  </div>
+  {!kit && (
+    <>
+      <input type="hidden" name="_subject" value={`Sign-up: ${topic}`} />
+      <input type="hidden" name="topic" value={topic} />
+      <input
+        class="sh-hp"
+        type="text"
+        name="_gotcha"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+    </>
+  )}
+  <p class="sh-form__note">
+    I plan to email this list only when something is ready. Unsubscribe at any time. See the{' '}
+    <a href="/privacy-policy">privacy policy</a>.
+  </p>
+  <p class="sh-form__status" data-status role="status" aria-live="polite"></p>
+</form>

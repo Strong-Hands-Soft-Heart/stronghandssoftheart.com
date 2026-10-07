@@ -1,0 +1,101 @@
+/* Strong Hands, Soft Heart — generated from design-system/tokens.json by scripts/build-tokens.mjs. Do not edit. */
+
+:root {
+  color-scheme: light;
+  --paper: #f7f4ef;
+  --paper-2: #ebe4da;
+  --card: #fffcf7;
+  --rule: #d9d2c8;
+  --ink: #161412;
+  --ink-soft: #4a453f;
+  --ink-muted: #645c54;
+  --earth: #a5412a;
+  --earth-deep: #8a3421;
+  --earth-tint: #eddfd7;
+  --on-earth: #f7f4ef;
+  --air: #35627f;
+  --air-tint: #e0e2e2;
+  --on-air: #f7f4ef;
+  --air-deep: #1c2740;
+  --on-air-deep: #efe6d6;
+  --sun: #d4923a;
+  --error: #a9241c;
+  --bent-paper: #f7f4ef;
+  --bent-page: #ebe4da;
+  --bent-ink: #161412;
+  --bent-red: #c0182a;
+  --bent-ochre: #c4853a;
+  --bent-water: #3a6b8c;
+  --bent-glow: #e8c96a;
+  --mia-paper: #f3ead8;
+  --mia-ink: #2a221c;
+  --mia-ember: #c4452f;
+  --mia-blush: #e8b4a0;
+  --mia-sun: #d4923a;
+  --mia-dusk: #1c2740;
+  --mia-moonlight: #efe6d6;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-full: 999px;
+  --measure: 62ch;
+  --shadow-page: 0 18px 50px rgba(42,34,28,0.22);
+  --font-display: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+  --font-text: "Source Serif 4", "Iowan Old Style", Palatino, Georgia, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #1c2740;
+    --paper-2: #26324d;
+    --card: #222d45;
+    --rule: #404d69;
+    --ink: #efe6d6;
+    --ink-soft: #cfc6b8;
+    --ink-muted: #b0a796;
+    --earth: #e8805f;
+    --earth-deep: #f08c6a;
+    --earth-tint: #343244;
+    --on-earth: #1c2740;
+    --air: #9cc2dc;
+    --air-tint: #2e3d56;
+    --on-air: #1c2740;
+    --air-deep: #121a2c;
+    --on-air-deep: #efe6d6;
+    --sun: #e8c96a;
+    --error: #f2a39b;
+    --shadow-page: 0 18px 50px rgba(0,0,0,0.5);
+  }
+}
+
+:root[data-theme='night'] {
+  color-scheme: dark;
+  --paper: #1c2740;
+  --paper-2: #26324d;
+  --card: #222d45;
+  --rule: #404d69;
+  --ink: #efe6d6;
+  --ink-soft: #cfc6b8;
+  --ink-muted: #b0a796;
+  --earth: #e8805f;
+  --earth-deep: #f08c6a;
+  --earth-tint: #343244;
+  --on-earth: #1c2740;
+  --air: #9cc2dc;
+  --air-tint: #2e3d56;
+  --on-air: #1c2740;
+  --air-deep: #121a2c;
+  --on-air-deep: #efe6d6;
+  --sun: #e8c96a;
+  --error: #f2a39b;
+  --shadow-page: 0 18px 50px rgba(0,0,0,0.5);
+}

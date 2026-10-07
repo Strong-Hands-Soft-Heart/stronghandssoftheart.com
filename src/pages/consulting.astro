@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import ContactForm from '../components/ContactForm.astro';
+import CraftCard from '../components/CraftCard.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import PageHead from '../components/PageHead.astro';
+import Testimonial from '../components/Testimonial.astro';
+import { reading, selectedWork, services, steps, testimonials } from '../data/consulting';
+---
+
+<Base
+  title="AI and Engineering Consulting"
+  description="AI enablement, systems and product architecture, hands-on engineering, and advisory from Antonio Rodríguez Martínez, a technical program manager and former CTO who still writes code."
+>
+  <PageHead
+    eyebrow="Consulting"
+    title="AI and Engineering Consulting"
+    badge="Available"
+    lead="I help teams design, ship and stabilize software, from AI tools to core product platforms. I am a technical program manager and former CTO, and I still write code. I work with founders, product leads, engineering managers and engineers."
+  >
+    <div class="sh-hero__actions">
+      <Button href="#contact">Write to Me</Button>
+      <Button variant="outline" href="#services">
+        Services
+      </Button>
+    </div>
+  </PageHead>
+
+  <section class="sh-section sh-section--alt" id="services">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>Services</Eyebrow>
+        <h2 class="sh-h2">What We Can Build, Fix or Clarify</h2>
+        <p class="sh-section__lead">
+          Each engagement is scoped to where you are: validating a product, scaling a system,
+          untangling complexity, or growing as an engineer.
+        </p>
+      </div>
+      <div class="sh-grid sh-grid--2">
+        {services.map((service) => (
+          <CraftCard icon={service.icon} title={service.title} meta={service.meta}>
+            {service.body}
+          </CraftCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-section" id="approach">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>How I Work</Eyebrow>
+        <h2 class="sh-h2">Listen, Design, Build</h2>
+      </div>
+      <ol class="sh-grid" style="list-style:none;margin:0;padding:0">
+        {steps.map((step, index) => (
+          <li class="sh-card" style="max-width:none">
+            <span class="sh-eyebrow">Step {index + 1}</span>
+            <h3 class="sh-card__title">{step.title}</h3>
+            <p class="sh-card__body">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sh-section sh-section--alt" id="work">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>Selected Work</Eyebrow>
+        <h2 class="sh-h2">Things You Can Look At</h2>
+      </div>
+      <div class="sh-grid">
+        {selectedWork.map((work) => (
+          <CraftCard icon="code" title={work.title} linkLabel="Visit" href={work.href}>
+            {work.body}
+          </CraftCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-section" id="testimonials">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>Recommendations</Eyebrow>
+        <h2 class="sh-h2">What Colleagues and Clients Wrote</h2>
+        <p class="sh-section__lead">From recommendations on LinkedIn, quoted as written.</p>
+      </div>
+      <div class="sh-grid">
+        {testimonials.map((t) => (
+          <Testimonial quote={t.quote} name={t.name} role={t.role} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-section sh-section--alt" id="reading">
+    <div class="sh-container sh-prose">
+      <Eyebrow>Reading</Eyebrow>
+      <h2 class="sh-h2" style="margin-top:var(--space-2)">
+        Books Behind This Work
+      </h2>
+      <ul>
+        {reading.map((book) => (
+          <li>
+            <em>{book.title}</em>, {book.author}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sh-section sh-deep" id="contact">
+    <div class="sh-container">
+      <div class="sh-section__head">
+        <Eyebrow>Contact</Eyebrow>
+        <h2 class="sh-h2">Tell Me What You Are Working On</h2>
+        <p class="sh-section__lead">Email is the simplest start: no funnel, just a conversation.</p>
+      </div>
+      <ContactForm defaultTopic="Consulting" />
+    </div>
+  </section>
+</Base>

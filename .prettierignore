@@ -1,0 +1,7 @@
+dist/
+.astro/
+public/
+design-system/
+# Compact one-line rules, as in the design system bundle.css
+src/styles/
+pnpm-lock.yaml

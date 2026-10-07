@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mia sun and moon mark">
+  <rect width="64" height="64" rx="14" fill="#f3ead8"></rect>
+  
+  <circle cx="26" cy="32" r="16" fill="#d4923a"></circle>
+  
+  <circle cx="40" cy="32" r="14" fill="#efe6d6"></circle>
+  <circle cx="46" cy="32" r="12" fill="#f3ead8"></circle>
+  
+  <circle cx="32" cy="52" r="1.6" fill="#c4452f"></circle>
+</svg>

@@ -1,0 +1,23 @@
+---
+import Mark from './Mark.astro';
+
+/** The full name with the comma in italic earth (web), or the SHSH lockup (product). */
+interface Props {
+  short?: boolean;
+  class?: string;
+}
+
+const { short = false, class: className } = Astro.props;
+---
+
+{short ? (
+  <span class:list={['sh-wordmark', 'sh-wordmark--lockup', className]} aria-label="SHSH">
+    <span aria-hidden="true">SH</span>
+    <Mark class="sh-wordmark__mark" />
+    <span aria-hidden="true">SH</span>
+  </span>
+) : (
+  <span class:list={['sh-wordmark', className]}>
+    Strong Hands<em>,</em> Soft Heart
+  </span>
+)}

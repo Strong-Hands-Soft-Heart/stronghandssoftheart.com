@@ -1,0 +1,95 @@
+---
+import Mark from './Mark.astro';
+import Wordmark from './Wordmark.astro';
+import { NOTES_URL, SITE } from '../config/site';
+
+/** The deep surface: who makes this, where, and every page. */
+const year = new Date().getFullYear();
+---
+
+<footer class="sh-deep sh-footer">
+  <div class="sh-container">
+    <div class="sh-footer__grid">
+      <div class="sh-footer__brand">
+        <span style="display:inline-flex;align-items:center;gap:var(--space-3)">
+          <Mark size={24} />
+          <Wordmark />
+        </span>
+        <p class="sh-caption" style="margin:0">
+          {SITE.founder}. From Puerto Rico, in Florida.
+        </p>
+        <p class="sh-caption" style="margin:0">
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </p>
+      </div>
+      <div>
+        <h2 class="sh-footer__heading">What I Make</h2>
+        <ul>
+          <li>
+            <a href="/soap">Soap</a>
+          </li>
+          <li>
+            <a href="/books">Books</a>
+          </li>
+          <li>
+            <a href="/notes">Notes</a>
+          </li>
+          <li>
+            <a href="/consulting">Consulting</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sh-footer__heading">Company</h2>
+        <ul>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/logo">The Mark</a>
+          </li>
+          <li>
+            <a href="/consulting#contact">Contact</a>
+          </li>
+          <li>
+            <a href="/#updates">Soap Updates</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sh-footer__heading">Elsewhere</h2>
+        <ul>
+          <li>
+            <a href={NOTES_URL}>Notes</a>
+          </li>
+          <li>
+            <a href={SITE.founderUrl}>antoniwan.online</a>
+          </li>
+          <li>
+            <a href="https://github.com/Strong-Hands-Soft-Heart">GitHub</a>
+          </li>
+          <li>
+            <a href="/llms.txt">llms.txt</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sh-footer__heading">Legal</h2>
+        <ul>
+          <li>
+            <a href="/privacy-policy">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/terms-of-service">Terms of Service</a>
+          </li>
+          <li>
+            <a href="/product-disclaimers">Product Disclaimers</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="sh-footer__base">
+      © {year} {SITE.legalName}
+    </p>
+  </div>
+</footer>

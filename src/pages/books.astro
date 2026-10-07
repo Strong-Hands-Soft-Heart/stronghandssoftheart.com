@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import BookCard from '../components/BookCard.astro';
+import PageHead from '../components/PageHead.astro';
+import { BOOK_LICENSE, books } from '../data/books';
+---
+
+<Base
+  title="Children's Books"
+  description="Two short picture books by Antonio Rodríguez Martínez, free to read in English and Spanish: Mia, the Sun, and the Moon, and The Bent One."
+>
+  <PageHead
+    eyebrow="The Books"
+    title="Two Picture Books, Free to Read"
+    badge="Free"
+    lead="I wrote them for my kids and my nephew. Each one reads in English or Spanish, in the browser. No account needed."
+  >
+    <div class="sh-lang" lang="es">
+      <p>
+        Dos cuentos cortos que escribí para mis hijos y mi sobrino. Se leen gratis en inglés o en
+        español, en el navegador.
+      </p>
+    </div>
+  </PageHead>
+
+  <section class="sh-section">
+    <div class="sh-container">
+      <div class="sh-grid sh-grid--2">
+        {books.map((book) => (
+          <BookCard book={book} />
+        ))}
+      </div>
+      <p class="sh-caption" style="margin-top:var(--space-8)">
+        {BOOK_LICENSE}
+      </p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import BookCard from '../components/BookCard.astro';
+import Button from '../components/Button.astro';
+import CraftCard from '../components/CraftCard.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import NoteList from '../components/NoteList.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { books } from '../data/books';
+import { crafts, music } from '../data/crafts';
+import { latestNotes } from '../utils/notes';
+
+const notes = await latestNotes(3);
+---
+
+<Base>
+  <Hero
+    eyebrow="Strong Hands, Soft Heart LLC"
+    title="Soap, books and software."
+    emphasis="Made by one person in Florida."
+    lead="This page says what I make, what is ready, and what is not. Nothing here is a promise."
+  >
+    <Button href="#updates">Get Soap Updates</Button>
+    <Button variant="outline" href="/books">
+      Read the Books
+    </Button>
+  </Hero>
+
+  <section class="sh-section sh-section--alt" id="what-i-make">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>What I Make</Eyebrow>
+        <h2 class="sh-h2">What Is Ready and What Is Not</h2>
+      </div>
+      <div class="sh-grid sh-grid--4">
+        {crafts.map((craft) => (
+          <CraftCard
+            icon={craft.icon}
+            title={craft.title}
+            badge={craft.status}
+            linkLabel={craft.linkLabel}
+            href={craft.href}
+          >
+            {craft.body}
+          </CraftCard>
+        ))}
+      </div>
+      <p class="sh-status-row">
+        <span class="sh-card__tile">
+          <Icon name={music.icon} size={18} />
+        </span>
+        <strong style="color:var(--ink)">{music.title}</strong>
+        <Badge tone="air">{music.status}</Badge>
+        <span>{music.body}</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="sh-section sh-deep" id="updates">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>Soap Updates</Eyebrow>
+        <h2 class="sh-h2">Hear When the First Bars Are Ready</h2>
+        <p class="sh-section__lead">
+          The first bars of cold-process soap are planned for late 2026. Leave your email and I will
+          write when they are for sale.
+        </p>
+      </div>
+      <SignupForm topic="Soap and launch updates" />
+    </div>
+  </section>
+
+  <section class="sh-section" id="books">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>The Books</Eyebrow>
+        <h2 class="sh-h2">Two Picture Books, Free to Read</h2>
+        <p class="sh-section__lead">
+          I wrote them for my kids and my nephew. Each one reads in English or Spanish, in the
+          browser.
+        </p>
+      </div>
+      <div class="sh-grid sh-grid--2">
+        {books.map((book) => (
+          <BookCard book={book} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-section sh-section--alt" id="notes">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>Notes</Eyebrow>
+        <h2 class="sh-h2">The Writing Behind the Work</h2>
+        <p class="sh-section__lead">
+          Notes is where I write about fatherhood, philosophy, culture and work. The latest essays:
+        </p>
+      </div>
+      {notes.length > 0 && <NoteList notes={notes} />}
+      <div class="sh-hero__actions">
+        <Button variant="outline" href="/notes">
+          More from Notes
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-section" id="consulting">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>Consulting</Eyebrow>
+        <h2 class="sh-h2">AI and Engineering Consulting</h2>
+        <p class="sh-section__lead">
+          I help teams design, ship and stabilize software, from AI tools to core product platforms.
+          I am a technical program manager and former CTO, and I still write code.
+        </p>
+      </div>
+      <div class="sh-hero__actions" style="margin-top:0">
+        <Button variant="outline" href="/consulting">
+          Services and Contact
+        </Button>
+      </div>
+    </div>
+  </section>
+</Base>

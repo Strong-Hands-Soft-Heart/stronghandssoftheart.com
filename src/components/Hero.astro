@@ -1,0 +1,35 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+/** Eyebrow, a statement with one italic phrase in earth, a lead, and actions. Grain ground. */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  emphasis?: string;
+  lead?: string;
+}
+
+const { eyebrow, title, emphasis, lead } = Astro.props;
+---
+
+<section class="sh-hero">
+  <div class="sh-grain" aria-hidden="true"></div>
+  <div class="sh-container">
+    <div class="sh-hero__inner">
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h1 class="sh-hero__title">
+        {title}
+        {emphasis && (
+          <>
+            {' '}
+            <em>{emphasis}</em>
+          </>
+        )}
+      </h1>
+      {lead && <p class="sh-hero__lead">{lead}</p>}
+      <div class="sh-hero__actions">
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>

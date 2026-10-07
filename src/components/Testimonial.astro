@@ -1,0 +1,18 @@
+---
+/** A quote as written, with the person's name and role. Never edited, never invented. */
+interface Props {
+  quote: string;
+  name: string;
+  role: string;
+}
+
+const { quote, name, role } = Astro.props;
+---
+
+<figure class="sh-quote">
+  <blockquote>“{quote}”</blockquote>
+  <figcaption>
+    <strong>{name}</strong>
+    {role}
+  </figcaption>
+</figure>

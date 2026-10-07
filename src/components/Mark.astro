@@ -1,0 +1,33 @@
+---
+/** The mark: a diamond and its equator. Outline in currentColor; seal = air above, earth below. */
+interface Props {
+  size?: number;
+  seal?: boolean;
+  class?: string;
+  label?: string;
+}
+
+const { size = 32, seal = false, class: className, label } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  width={size}
+  height={size}
+  stroke="currentColor"
+  stroke-width="5"
+  class:list={['sh-mark', className]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  {seal && (
+    <>
+      <polygon points="50,2.5 97.5,50 2.5,50" fill="var(--air)" />
+      <polygon points="2.5,50 97.5,50 50,97.5" fill="var(--earth)" />
+    </>
+  )}
+  <polygon points="50,2.5 97.5,50 50,97.5 2.5,50" fill="none"></polygon>
+  <line x1="2.5" y1="50" x2="97.5" y2="50"></line>
+</svg>

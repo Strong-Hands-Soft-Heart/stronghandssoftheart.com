@@ -1,0 +1,38 @@
+---
+import Badge from './Badge.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+
+/** Icon tile and status badge, title, one or two sentences, a quiet link. Hairline card, no shadow. */
+interface Props {
+  icon: IconName;
+  title: string;
+  badge?: string;
+  meta?: string;
+  linkLabel?: string;
+  href?: string;
+}
+
+const { icon, title, badge, meta, linkLabel, href } = Astro.props;
+const external = href ? /^https?:\/\//.test(href) : false;
+---
+
+<article class="sh-card">
+  <div class="sh-card__top">
+    <span class="sh-card__tile">
+      <Icon name={icon} />
+    </span>
+    {badge && <Badge>{badge}</Badge>}
+  </div>
+  <h3 class="sh-card__title">{title}</h3>
+  {meta && <p class="sh-card__meta">{meta}</p>}
+  <p class="sh-card__body">
+    <slot />
+  </p>
+  {linkLabel && href && (
+    <Button variant="quiet" href={href} arrow={external}>
+      {linkLabel}
+    </Button>
+  )}
+</article>

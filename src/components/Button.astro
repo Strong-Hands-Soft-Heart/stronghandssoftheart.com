@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+
+/** earth: the one filled action per view. outline: ink hairline pill. quiet: a text link in earth. */
+interface Props {
+  variant?: 'earth' | 'outline' | 'quiet';
+  href?: string;
+  /** Appends the arrow-up-right icon. Set it on every outbound link. */
+  arrow?: boolean;
+  type?: 'button' | 'submit';
+  class?: string;
+}
+
+const { variant = 'earth', href, arrow = false, type = 'button', class: className } = Astro.props;
+const external = href ? /^https?:\/\//.test(href) : false;
+const classes = ['sh-btn', `sh-btn--${variant}`, className];
+---
+
+{href ? (
+  <a href={href} class:list={classes} rel={external ? 'noopener' : undefined}>
+    <slot />
+    {arrow && <Icon name="arrow-up-right" size={14} class="sh-btn__arrow" />}
+  </a>
+) : (
+  <button type={type} class:list={classes}>
+    <slot />
+    {arrow && <Icon name="arrow-up-right" size={14} class="sh-btn__arrow" />}
+  </button>
+)}

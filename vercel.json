@@ -1,0 +1,9 @@
+{
+  "framework": "astro",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/what-we-do", "destination": "/#what-i-make", "permanent": true },
+    { "source": "/contact", "destination": "/consulting#contact", "permanent": false }
+  ]
+}

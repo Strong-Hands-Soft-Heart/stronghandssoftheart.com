@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import PageHead from '../components/PageHead.astro';
+---
+
+<Base title="Not Found">
+  <PageHead
+    eyebrow="404"
+    title="This Page Does Not Exist"
+    lead="The link may be old. The consulting site moved here in October 2026."
+  >
+    <div class="sh-hero__actions">
+      <Button href="/">Home</Button>
+      <Button variant="outline" href="/consulting">
+        Consulting
+      </Button>
+    </div>
+  </PageHead>
+</Base>

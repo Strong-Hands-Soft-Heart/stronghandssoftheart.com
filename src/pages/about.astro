@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Mark from '../components/Mark.astro';
+import PageHead from '../components/PageHead.astro';
+import { SITE } from '../config/site';
+
+const values = [
+  'Quality over quantity',
+  'Sacred over sterile',
+  'Honesty over polish',
+  'Local over scalable',
+  'Presence over hype',
+];
+---
+
+<Base
+  title="About"
+  description="Strong Hands, Soft Heart LLC is Antonio Rodríguez Martínez's company: one person, in Florida, from Puerto Rico. It makes cold-process soap, children's books, Notes, and software."
+>
+  <PageHead
+    eyebrow="About"
+    title="Who Is Behind Strong Hands, Soft Heart"
+    lead="I'm Antonio Rodríguez Martínez. Strong Hands, Soft Heart is my company: one person, in Florida, from Puerto Rico."
+  />
+
+  <section class="sh-section">
+    <div class="sh-container sh-prose">
+      <p>
+        Strong Hands, Soft Heart is my personal commitment: to family, to craft, and to legacy. It
+        makes cold-process soap (not for sale yet), two short bilingual picture books (free to
+        read), and software. I also write Notes, and I record music with my friends.
+      </p>
+      <p>Nearly all of the work is mine. When someone else does part of it, I name them.</p>
+
+      <h2>Values</h2>
+      <ul>
+        {values.map((value) => (
+          <li>{value}</li>
+        ))}
+      </ul>
+
+      <h2>The Mark</h2>
+      <p style="display:flex;align-items:center;gap:var(--space-4)">
+        <Mark size={40} />
+        <span>
+          A diamond crossed by its equator: earth below the line, air above.{' '}
+          <a href="/logo">Read about the mark</a>.
+        </span>
+      </p>
+
+      <h2>Elsewhere</h2>
+      <div class="sh-hero__actions" style="margin-top:var(--space-4)">
+        <Button variant="outline" href={SITE.founderUrl} arrow>
+          antoniwan.online
+        </Button>
+        <Button variant="outline" href="https://www.linkedin.com/in/antoniwan" arrow>
+          LinkedIn
+        </Button>
+        <Button variant="quiet" href="/consulting#contact">
+          Write to Me
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-section sh-section--alt">
+    <div class="sh-container sh-prose">
+      <Eyebrow>The Company</Eyebrow>
+      <ul>
+        <li>Legal name: {SITE.legalName}</li>
+        <li>Founder: {SITE.founder}</li>
+        <li>Based in: Florida, USA</li>
+        <li>
+          Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</Base>

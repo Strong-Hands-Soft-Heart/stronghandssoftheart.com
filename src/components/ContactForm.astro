@@ -1,0 +1,78 @@
+---
+import Button from './Button.astro';
+import { FORMSPREE_FORM_ID, SITE } from '../config/site';
+
+/** Name, email, topic, message. Posts to Formspree; answers in place when JavaScript runs. */
+interface Props {
+  defaultTopic?: string;
+}
+
+const { defaultTopic = 'Consulting' } = Astro.props;
+const topics = ['Consulting', 'Soap', 'Books', 'Collaboration', 'Other'];
+---
+
+<form
+  class="sh-form"
+  action={`https://formspree.io/f/${FORMSPREE_FORM_ID}`}
+  method="post"
+  data-sh-form
+  data-done="Thank you. Your message reached me, and I will reply by email."
+>
+  <div class="sh-field">
+    <label class="sh-label-text" for="contact-name">
+      Name
+    </label>
+    <input class="sh-input" id="contact-name" name="name" autocomplete="name" required />
+  </div>
+  <div class="sh-field">
+    <label class="sh-label-text" for="contact-email">
+      Email
+    </label>
+    <input
+      class="sh-input"
+      id="contact-email"
+      type="email"
+      name="email"
+      autocomplete="email"
+      required
+    />
+  </div>
+  <div class="sh-field">
+    <label class="sh-label-text" for="contact-topic">
+      Topic
+    </label>
+    <select class="sh-select" id="contact-topic" name="topic">
+      {topics.map((topic) => (
+        <option selected={topic === defaultTopic}>{topic}</option>
+      ))}
+    </select>
+  </div>
+  <div class="sh-field">
+    <label class="sh-label-text" for="contact-message">
+      Message
+    </label>
+    <textarea
+      class="sh-textarea"
+      id="contact-message"
+      name="message"
+      required
+      placeholder="Who you are, what you are building, where it feels stuck, and any links I should see."
+    ></textarea>
+  </div>
+  <input type="hidden" name="_subject" value="Message from stronghandssoftheart.com" />
+  <input
+    class="sh-hp"
+    type="text"
+    name="_gotcha"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+  <div>
+    <Button type="submit">Send Message</Button>
+  </div>
+  <p class="sh-form__note">
+    Or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+  </p>
+  <p class="sh-form__status" data-status role="status" aria-live="polite"></p>
+</form>

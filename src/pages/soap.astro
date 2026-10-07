@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import PageHead from '../components/PageHead.astro';
+import SignupForm from '../components/SignupForm.astro';
+---
+
+<Base
+  title="Cold-Process Soap"
+  description="Cold-process soap, made in small batches in Florida. Not for sale yet; the first bars are planned for late 2026. Leave your email to hear when they are ready."
+>
+  <PageHead
+    eyebrow="Soap"
+    title="Cold-Process Soap"
+    badge="Planned: late 2026"
+    lead="Cold-process soap, made in small batches in Florida. Not for sale yet; the first bars are planned for late 2026."
+  >
+    <div class="sh-lang" lang="es">
+      <Eyebrow>En español</Eyebrow>
+      <p>
+        Jabón de proceso en frío, hecho en tandas pequeñas en Florida. Todavía no está a la venta;
+        las primeras barras están planificadas para finales de 2026.
+      </p>
+    </div>
+  </PageHead>
+
+  <section class="sh-section">
+    <div class="sh-container sh-prose">
+      <h2 class="sh-h2" style="margin-top:0">
+        What I Can Say Now
+      </h2>
+      <ul>
+        <li>Each bar is named for its scent.</li>
+        <li>
+          Each label will list every ingredient, the net weight in ounces and grams, and a batch
+          code.
+        </li>
+      </ul>
+      <p>
+        Before you use any bar, read the <a href="/product-disclaimers">product disclaimers</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="sh-section sh-deep" id="updates">
+    <div class="sh-container">
+      <div class="sh-section__head">
+        <Eyebrow>Soap Updates</Eyebrow>
+        <h2 class="sh-h2">Hear When the First Bars Are Ready</h2>
+        <p class="sh-section__lead">
+          Leave your email and I will write when the first bars are for sale.
+        </p>
+        <p class="sh-section__lead" lang="es">
+          Deja tu correo y te escribo cuando las primeras barras estén a la venta.
+        </p>
+      </div>
+      <SignupForm topic="Soap updates" />
+    </div>
+  </section>
+</Base>

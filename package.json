@@ -1,0 +1,33 @@
+{
+  "name": "stronghandssoftheart.com",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strong Hands, Soft Heart LLC: soap, books, Notes, and consulting.",
+  "author": "Antonio Rodríguez Martínez <hello@stronghandssoftheart.com>",
+  "homepage": "https://www.stronghandssoftheart.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Strong-Hands-Soft-Heart/stronghandssoftheart.com.git"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "tokens": "node scripts/build-tokens.mjs",
+    "og": "node scripts/build-og.mjs",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3"
+  }
+}
