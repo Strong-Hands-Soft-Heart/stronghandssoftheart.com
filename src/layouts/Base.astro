@@ -20,7 +20,6 @@ const canonical = new URL(cleanPath, SITE.url).href;
 const ogImage = new URL('/og.png', SITE.url).href;
 
 const organization = {
-  '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': `${SITE.url}/#organization`,
   name: SITE.legalName,
@@ -31,6 +30,20 @@ const organization = {
   founder: { '@type': 'Person', '@id': SITE.founderId, name: SITE.founder, url: SITE.founderUrl },
   address: { '@type': 'PostalAddress', addressRegion: 'FL', addressCountry: 'US' },
   sameAs: [SITE.github],
+};
+// On Home only: the site's name, which Google can show above its results.
+const website = {
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  name: SITE.name,
+  alternateName: ['SH&SH', SITE.legalName],
+  url: `${SITE.url}/`,
+  inLanguage: 'en',
+  publisher: { '@id': `${SITE.url}/#organization` },
+};
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': cleanPath === '/' ? [website, organization] : [organization],
 };
 ---
 
@@ -73,7 +86,7 @@ const organization = {
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <script type="application/ld+json" set:html={JSON.stringify(organization)} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
     <script is:inline define:vars={{ GA_ID }}>
       window.dataLayer = window.dataLayer || [];
