@@ -2,6 +2,11 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-10-07
+
+- Notes is Antonio's own writing, not a company publication. The Notes page, the home section, the About page, the footer, llms.txt, and the site description now say so; Notes is no longer a card under "What I Make".
+- Consulting selected work lists two client sites (JuanAngustia.com, AbogadaJulia.com) instead of builds.software, which now redirects to antoniwan.online. llms.txt links the founder's code page instead.
+
 ## [1.1.2] - 2026-10-07
 
 - The page no longer describes itself: the hero lead ("This page says what is ready…") is gone, and the hero reads "Soap, books and software. Made in Florida."

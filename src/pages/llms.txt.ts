@@ -27,7 +27,7 @@ To get in touch, use the contact form on the consulting page or email ${SITE.ema
 - [Home](${url('/')}): what SH&SH makes and the status of each
 - [Cold-Process Soap](${url('/soap')}): the first product, and the sign-up for launch news
 - [Children's Books](${url('/books')}): two free bilingual picture books
-- [Notes](${url('/notes')}): the publication, with the latest essays
+- [Notes](${url('/notes')}): the founder's own writing, which is his and not the company's, with the latest essays
 - [AI and Engineering Consulting](${url('/consulting')}): ${services.map((s) => s.title).join('; ')}; and the contact form
 - [About](${url('/about')}): who is behind the company, and its values
 
@@ -40,7 +40,7 @@ ${BOOK_LICENSE}
 ## Related
 
 - [Notes](${NOTES_URL}/llms.txt): every essay, with a markdown copy of each
-- [Builds.software](https://builds.software/llms.txt): ${SITE.founder}'s engineering portfolio
+- [Code](${SITE.founderUrl}/code): the founder's projects and open source
 - [${SITE.founder}](${SITE.founderUrl}/llms.txt): all of the founder's links
 
 ## Optional

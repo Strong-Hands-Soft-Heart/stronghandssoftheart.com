@@ -31,14 +31,6 @@ export const crafts: Craft[] = [
     href: '/books',
   },
   {
-    icon: 'pen-line',
-    title: 'Notes',
-    status: 'Free',
-    body: 'My essays on fatherhood, philosophy, culture and work, and the recipes we cook at home.',
-    linkLabel: 'Read Notes',
-    href: '/notes',
-  },
-  {
     icon: 'code',
     title: 'AI and Engineering Consulting',
     status: 'Available',

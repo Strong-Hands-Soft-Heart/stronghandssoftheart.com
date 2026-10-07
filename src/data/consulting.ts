@@ -98,9 +98,14 @@ export const reading = [
 
 export const selectedWork = [
   {
-    title: 'Builds.software',
-    href: 'https://builds.software',
-    body: 'My portfolio of engineering and product work.',
+    title: 'JuanAngustia.com',
+    href: 'https://juanangustia.com',
+    body: 'A portfolio site for a friend at Google: React and Framer Motion, with particle effects and heavy animation.',
+  },
+  {
+    title: 'AbogadaJulia.com',
+    href: 'https://abogadajulia.com',
+    body: 'A multilingual site for an immigration attorney, designed in Figma and built on a customized WordPress theme.',
   },
   {
     title: 'Notes',

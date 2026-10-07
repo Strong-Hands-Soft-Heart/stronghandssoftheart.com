@@ -3,7 +3,7 @@ export const SITE = {
   legalName: 'Strong Hands, Soft Heart LLC',
   url: 'https://www.stronghandssoftheart.com',
   description:
-    'Soap, books and software, made by one person in Florida. Cold-process soap planned for late 2026, two free bilingual picture books, Notes, and AI and engineering consulting.',
+    'Soap, books and software, made by one person in Florida. Cold-process soap planned for late 2026, two free bilingual picture books, and AI and engineering consulting.',
   email: 'hello@stronghandssoftheart.com',
   founder: 'Antonio Rodríguez Martínez',
   founderUrl: 'https://antoniwan.online',

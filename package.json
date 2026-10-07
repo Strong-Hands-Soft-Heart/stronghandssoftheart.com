@@ -1,9 +1,9 @@
 {
   "name": "stronghandssoftheart.com",
   "type": "module",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "private": true,
-  "description": "Strong Hands, Soft Heart LLC: soap, books, Notes, and consulting.",
+  "description": "Strong Hands, Soft Heart LLC: soap, books, and consulting.",
   "author": "Antonio Rodríguez Martínez <hello@stronghandssoftheart.com>",
   "homepage": "https://www.stronghandssoftheart.com",
   "repository": {
