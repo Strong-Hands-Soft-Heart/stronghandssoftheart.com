@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 
 /** earth: the one filled action per view. outline: ink hairline pill. quiet: a text link in earth. */
 interface Props {
-  variant?: 'earth' | 'outline' | 'quiet';
+  variant?: 'heart' | 'outline' | 'quiet';
   href?: string;
   /** Appends the arrow-up-right icon. Set it on every outbound link. */
   arrow?: boolean;
@@ -11,7 +11,7 @@ interface Props {
   class?: string;
 }
 
-const { variant = 'earth', href, arrow = false, type = 'button', class: className } = Astro.props;
+const { variant = 'heart', href, arrow = false, type = 'button', class: className } = Astro.props;
 const external = href ? /^https?:\/\//.test(href) : false;
 const classes = ['sh-btn', `sh-btn--${variant}`, className];
 ---

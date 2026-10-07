@@ -2,6 +2,17 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.0.0] - 2026-10-07
+
+The rebrand: white, black and strawberry; Unbounded and Geist; the Ground as entropy. Copy unchanged.
+
+- Palette: white, black and Apple's Strawberry (#ff2f92). Tokens renamed to say what they are: `heart` (strawberry: fills, the hero phrase, the mark), `heart-ink` (a deeper strawberry for small text, 5.7:1 on white), `heart-tint`, `on-heart` (black on strawberry), `deep` and `on-deep` (the black surface). `earth`, `air` and `sun` are gone. Night is white on black. Every text pair checked at 4.5:1 or better; strawberry type only at 24px+.
+- The mark now carries the name: Soft Heart above the equator in strawberry, Strong Hands below in black. Logos, seal, favicon, app icon and social card recoloured; the SHSH lockup regenerated in Unbounded by `scripts/build-lockup.mjs` (fontkit).
+- Type: Unbounded for display, Geist for text, both variable and self-hosted. Fraunces and Source Serif stay with the books and Notes. No italic emphasis; the hero phrase is strawberry, upright.
+- Ground v2: forty loose strokes drift in chaos; in eight places they assemble the mark (edges in ink, equator in strawberry), hold, and dissolve, on staggered 18-second cycles. The ground thins to a quarter inside the text block (`data-sh-shield`) so text keeps contrast. Still frame under reduced motion.
+- Button variant `earth` → `heart` (hover turns the fill black); Badge tone `air` → `quiet`.
+- Fixed: a `.sh-field` class collision that moved the sign-up field; a reserved word (`out`) in the shader that hid the canvas.
+
 ## [1.3.0] - 2026-10-07
 
 - The Ground: a WebGL shader draws the mark's own geometry behind the hero, every page head and the deep call-to-action sections. A grid of diamond outlines with their equators, drifting and breathing; one horizon line in earth; a wash of air above and earth below; a trace of sun. Every colour is a design-system token, so day and night both work. Strokes stay between 5 and 14% so text keeps its contrast. One still frame under reduced motion; paused off-screen and when the tab is hidden; hidden without WebGL. About 6 KB of script, no library. The shader lives in the design system (`components/ground.frag`) and is copied to `design-system/ground.frag`.

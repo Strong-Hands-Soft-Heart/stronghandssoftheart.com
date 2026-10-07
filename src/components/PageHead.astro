@@ -17,7 +17,7 @@ const { eyebrow, title, badge, lead } = Astro.props;
 <section class="sh-page-head sh-ground-host">
   <Ground />
   <div class="sh-grain" aria-hidden="true"></div>
-  <div class="sh-container" style="position:relative">
+  <div class="sh-container" style="position:relative" data-sh-shield>
     <Eyebrow>{eyebrow}</Eyebrow>
     <h1 class="sh-h1">{title}</h1>
     {badge && (

@@ -1,7 +1,9 @@
 // Mounts the Ground on every <canvas data-sh-ground>. Vanilla WebGL, no library.
 // Colours come from the design-system tokens on :root, so day and night both
-// work and a token change trickles down. Off under reduced motion (one still
-// frame), paused when off-screen or the tab is hidden, hidden when WebGL fails.
+// work and a token change trickles down. The text block inside the host
+// ([data-sh-shield], else the container) is passed to the shader, which thins
+// the strokes under it. Off under reduced motion (one still frame), paused
+// when off-screen or the tab is hidden, hidden when WebGL fails.
 import frag from '../../design-system/ground.frag?raw';
 
 const VERT = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.0,1.0);}';
@@ -22,13 +24,42 @@ function token(name: string): [number, number, number] {
 
 function palette(variant: Variant) {
   return {
-    u_ground: token(variant === 'deep' ? '--air-deep' : '--paper'),
-    u_stroke: token(variant === 'deep' ? '--on-air-deep' : '--ink'),
-    u_accent: token('--earth'),
-    u_air: token('--air'),
-    u_earth: token('--earth'),
-    u_sun: token('--sun'),
+    u_ground: token(variant === 'deep' ? '--deep' : '--paper'),
+    u_stroke: token(variant === 'deep' ? '--on-deep' : '--ink'),
+    u_heart: token('--heart'),
   };
+}
+
+/** The union of the shield element's children, in the canvas's centred, y-up CSS px. */
+function shieldRect(canvas: HTMLCanvasElement): [number, number, number, number] {
+  const host = canvas.parentElement;
+  const el =
+    host?.querySelector<HTMLElement>('[data-sh-shield]') ??
+    host?.querySelector<HTMLElement>('.sh-container');
+  if (!el) return [0, 0, 0, 0];
+  const items = el.children.length ? [...el.children] : [el];
+  let left = Infinity,
+    top = Infinity,
+    right = -Infinity,
+    bottom = -Infinity;
+  for (const child of items) {
+    const r = child.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) continue;
+    left = Math.min(left, r.left);
+    top = Math.min(top, r.top);
+    right = Math.max(right, r.right);
+    bottom = Math.max(bottom, r.bottom);
+  }
+  if (right <= left) return [0, 0, 0, 0];
+  const c = canvas.getBoundingClientRect();
+  const w = c.width,
+    h = c.height;
+  return [
+    left - c.left - w / 2,
+    c.bottom - bottom - h / 2,
+    right - c.left - w / 2,
+    c.bottom - top - h / 2,
+  ];
 }
 
 function mount(canvas: HTMLCanvasElement) {
@@ -61,8 +92,7 @@ function mount(canvas: HTMLCanvasElement) {
   }
   gl.useProgram(program);
 
-  const buffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
   const a = gl.getAttribLocation(program, 'a');
   gl.enableVertexAttribArray(a);
@@ -72,14 +102,14 @@ function mount(canvas: HTMLCanvasElement) {
   const uRes = loc('u_res');
   const uDpr = loc('u_dpr');
   const uTime = loc('u_time');
+  const uShield = loc('u_shield');
 
   const applyPalette = () => {
     for (const [name, rgb] of Object.entries(palette(variant))) gl.uniform3fv(loc(name), rgb);
   };
 
-  let dpr = 1;
   const resize = () => {
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
     const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
     if (canvas.width !== w || canvas.height !== h) {
@@ -89,11 +119,12 @@ function mount(canvas: HTMLCanvasElement) {
     gl.viewport(0, 0, w, h);
     gl.uniform2f(uRes, w, h);
     gl.uniform1f(uDpr, dpr);
+    gl.uniform4fv(uShield, shieldRect(canvas));
   };
 
   const start = performance.now();
   const draw = () => {
-    gl.uniform1f(uTime, motion.matches ? 0 : (performance.now() - start) / 1000);
+    gl.uniform1f(uTime, motion.matches ? 7 : (performance.now() - start) / 1000);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
@@ -119,7 +150,12 @@ function mount(canvas: HTMLCanvasElement) {
     wake();
   };
 
-  new ResizeObserver(still).observe(canvas);
+  const ro = new ResizeObserver(still);
+  ro.observe(canvas);
+  const shield =
+    canvas.parentElement?.querySelector('[data-sh-shield]') ??
+    canvas.parentElement?.querySelector('.sh-container');
+  if (shield) ro.observe(shield);
   new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
     if (visible) wake();
@@ -131,6 +167,7 @@ function mount(canvas: HTMLCanvasElement) {
     attributes: true,
     attributeFilter: ['data-theme'],
   });
+  document.fonts?.ready.then(still);
 
   still();
 }

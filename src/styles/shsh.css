@@ -1,43 +1,37 @@
-/* Strong Hands, Soft Heart — house styles. Paper, ink, earth, air. Borders, not shadows.
-   Ported from the design system's components/bundle.css; new parts are marked "new". */
+/* Strong Hands, Soft Heart — house styles. White, black and strawberry. Borders, not shadows.
+   The same rules as the design system's components/bundle.css, plus the fonts and tokens it provides itself. */
 
 @import './tokens.css';
 
-/* ---------- Fonts: the two families, never a third ---------- */
-@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-400-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-500-Italic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-600-Italic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Source Serif 4'; src: url('/fonts/SourceSerif4-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Source Serif 4'; src: url('/fonts/SourceSerif4-400-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Source Serif 4'; src: url('/fonts/SourceSerif4-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Source Serif 4'; src: url('/fonts/SourceSerif4-600-Italic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
+/* ---------- Fonts: Unbounded for display, Geist for text; the books keep their serifs ---------- */
+@font-face { font-family: 'Unbounded'; src: url('/fonts/Unbounded-Variable.woff2') format('woff2'); font-weight: 200 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Geist'; src: url('/fonts/Geist-Variable.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Geist'; src: url('/fonts/Geist-Variable-Italic.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; font-family: var(--font-text); font-size: 17px; line-height: 1.7; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
-::selection { background: color-mix(in srgb, var(--sun) 45%, transparent); color: var(--ink); }
+body { margin: 0; font-family: var(--font-text); font-size: 17px; line-height: 1.65; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--heart-tint); color: var(--ink); }
 img { max-width: 100%; height: auto; display: block; }
-a { color: var(--earth); text-underline-offset: 3px; }
-a:hover { color: var(--earth-deep); }
-:focus-visible { outline: 2px solid var(--earth); outline-offset: 2px; }
-.sh-deep :focus-visible { outline-color: var(--on-air-deep); }
+a { color: var(--heart-ink); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--heart); outline-offset: 2px; }
+.sh-deep :focus-visible { outline-color: var(--on-deep); }
 .sh-skip { position: absolute; left: var(--space-4); top: -100px; z-index: 10; padding: var(--space-2) var(--space-4); background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-sm); }
 .sh-skip:focus { top: var(--space-2); }
 .sh-visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* ---------- Layout (new) ---------- */
+/* ---------- Layout ---------- */
 .sh-container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 var(--space-6); }
 .sh-section { padding: var(--space-16) 0; }
 .sh-section--alt { background: var(--paper-2); }
-.sh-deep { background: var(--air-deep); color: var(--on-air-deep); }
-.sh-deep a { color: var(--on-air-deep); }
+.sh-deep { background: var(--deep); color: var(--on-deep); }
+.sh-deep a { color: var(--on-deep); }
+.sh-deep a:hover { color: var(--heart); }
 .sh-section__head { max-width: var(--measure); margin-bottom: var(--space-8); }
 .sh-section__lead { margin: var(--space-4) 0 0; color: var(--ink-soft); }
-.sh-deep .sh-section__lead, .sh-deep .sh-h2, .sh-deep .sh-eyebrow { color: var(--on-air-deep); }
+.sh-deep .sh-section__lead, .sh-deep .sh-h2, .sh-deep .sh-eyebrow { color: var(--on-deep); }
 .sh-grid { display: grid; gap: var(--space-6); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .sh-grid > .sh-card { max-width: none; }
 .sh-grid--4 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
@@ -50,46 +44,48 @@ a:hover { color: var(--earth-deep); }
 }
 
 /* ---------- Type helpers ---------- */
-.sh-wordmark { font-family: var(--font-display); font-weight: 600; font-size: 20px; line-height: 1.1; letter-spacing: -0.015em; color: var(--ink); }
-.sh-wordmark em { font-style: italic; font-weight: 500; color: var(--earth); }
+.sh-wordmark { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); }
+.sh-wordmark em { font-style: normal; color: var(--heart); }
 .sh-wordmark--lockup { display: inline-flex; align-items: center; gap: 0.15em; line-height: 1; }
-.sh-wordmark__mark { width: 0.66em; height: 0.66em; color: var(--earth); flex: none; }
-.sh-eyebrow { display: inline-block; font-family: var(--font-text); font-size: 12px; line-height: 1.2; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--earth); }
-.sh-h1 { margin: var(--space-3) 0 0; font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.25rem); line-height: 1.05; font-weight: 500; letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; }
-.sh-h2 { margin: var(--space-2) 0 0; font-family: var(--font-display); font-size: 36px; line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
-.sh-h3 { margin: 0; font-family: var(--font-display); font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); }
-.sh-lead { max-width: var(--measure); margin: var(--space-6) 0 0; font-size: 21px; line-height: 1.6; color: var(--ink-soft); text-wrap: pretty; }
+.sh-wordmark__mark { width: 0.72em; height: 0.72em; color: var(--heart); flex: none; }
+.sh-eyebrow { display: inline-block; font-family: var(--font-text); font-size: 12px; line-height: 1.2; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--heart-ink); }
+.sh-h1 { margin: var(--space-3) 0 0; font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 2.75rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.sh-h2 { margin: var(--space-2) 0 0; font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.sh-h3 { margin: 0; font-family: var(--font-display); font-size: 20px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.sh-lead { max-width: var(--measure); margin: var(--space-6) 0 0; font-size: 20px; line-height: 1.55; color: var(--ink-soft); text-wrap: pretty; }
 .sh-caption { font-size: 13px; line-height: 1.5; color: var(--ink-muted); }
-.sh-deep .sh-caption { color: var(--on-air-deep); }
+.sh-deep .sh-caption { color: var(--on-deep); }
 
-/* ---------- Buttons: pills, as the books ---------- */
+/* ---------- Buttons: pills. heart is the one filled action per view; hover turns it black ---------- */
 .sh-btn { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-6); border-radius: var(--radius-full);
-  font-family: var(--font-text); font-size: 15px; line-height: 1.2; font-weight: 600; letter-spacing: 0.02em; text-decoration: none; cursor: pointer;
+  font-family: var(--font-text); font-size: 15px; line-height: 1.2; font-weight: 600; letter-spacing: 0.01em; text-decoration: none; cursor: pointer;
   border: 1.5px solid transparent; transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
-.sh-btn--earth { background: var(--earth); color: var(--on-earth); border-color: var(--earth); }
-.sh-btn--earth:hover { background: var(--earth-deep); border-color: var(--earth-deep); color: var(--on-earth); }
+.sh-btn--heart { background: var(--heart); color: var(--on-heart); border-color: var(--heart); }
+.sh-btn--heart:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.sh-deep .sh-btn--heart:hover { background: var(--on-deep); border-color: var(--on-deep); color: var(--deep); }
 .sh-btn--outline { background: transparent; color: var(--ink); border-color: var(--ink); }
 .sh-btn--outline:hover { background: var(--ink); color: var(--paper); }
-.sh-deep .sh-btn--outline { color: var(--on-air-deep); border-color: var(--on-air-deep); }
-.sh-deep .sh-btn--outline:hover { background: var(--on-air-deep); color: var(--air-deep); }
-.sh-btn--quiet { padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--earth); font-weight: 600; letter-spacing: 0; }
-.sh-btn--quiet:hover { color: var(--earth-deep); text-decoration: underline; text-underline-offset: 3px; }
+.sh-deep .sh-btn--outline { color: var(--on-deep); border-color: var(--on-deep); }
+.sh-deep .sh-btn--outline:hover { background: var(--on-deep); color: var(--deep); }
+.sh-btn--quiet { padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--heart-ink); font-weight: 600; letter-spacing: 0; }
+.sh-btn--quiet:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.sh-deep .sh-btn--quiet { color: var(--on-deep); }
 .sh-btn[disabled] { opacity: 0.6; cursor: progress; }
 .sh-btn__arrow { flex: none; }
 
-/* ---------- Badge ---------- */
+/* ---------- Badge: heart-ink on heart-tint; quiet is ink-soft on paper-2 ---------- */
 .sh-badge { display: inline-block; white-space: nowrap; padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm);
-  background: var(--earth-tint); color: var(--earth); font-size: 12px; line-height: 1.3; font-weight: 600; letter-spacing: 0.04em; }
-.sh-badge--air { background: var(--air-tint); color: var(--air); }
+  background: var(--heart-tint); color: var(--heart-ink); font-size: 12px; line-height: 1.3; font-weight: 600; letter-spacing: 0.03em; }
+.sh-badge--quiet { background: var(--paper-2); color: var(--ink-soft); border: 1px solid var(--rule); }
 
-/* ---------- CraftCard: hairline, paper card, no shadow ---------- */
+/* ---------- CraftCard: hairline, no shadow ---------- */
 .sh-card { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-md); max-width: 340px; transition: border-color 180ms ease; }
-.sh-card:hover { border-color: var(--ink-muted); }
+.sh-card:hover { border-color: var(--ink); }
 .sh-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-1); }
-.sh-card__tile { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--paper-2); color: var(--ink-soft); flex: none; }
-.sh-card__title { margin: 0; font-family: var(--font-display); font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); }
+.sh-card__tile { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--paper-2); color: var(--ink); flex: none; }
+.sh-card__title { margin: 0; font-family: var(--font-display); font-size: 20px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
 .sh-card__meta { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-muted); }
-.sh-card__body { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.sh-card__body { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
 .sh-card .sh-btn--quiet { margin-top: auto; font-size: 15px; }
 
 /* ---------- SiteHeader ---------- */
@@ -98,120 +94,132 @@ a:hover { color: var(--earth-deep); }
 .sh-header__brand { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--ink); text-decoration: none; padding: var(--space-2) 0; }
 .sh-header__brand:hover { color: var(--ink); }
 .sh-header__nav { display: flex; align-items: center; gap: var(--space-6); }
-.sh-header__nav a { padding: var(--space-2) 0; font-size: 13px; line-height: 1.2; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; border-bottom: 1.5px solid transparent; transition: color 180ms ease; white-space: nowrap; }
+.sh-header__nav a { padding: var(--space-2) 0; font-size: 13px; line-height: 1.2; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; border-bottom: 2px solid transparent; transition: color 180ms ease; white-space: nowrap; }
 .sh-header__nav a:hover { color: var(--ink); }
-.sh-header__nav a[aria-current='page'] { color: var(--earth); border-bottom-color: var(--earth); }
-/* new: below 760px the nav drops to its own row and scrolls sideways; no menu button, no script */
+.sh-header__nav a[aria-current='page'] { color: var(--heart-ink); border-bottom-color: var(--heart); }
 @media (max-width: 759px) {
   .sh-header__nav { order: 3; width: 100%; gap: var(--space-3); overflow-x: auto; padding-bottom: var(--space-1); scrollbar-width: none; }
-  .sh-header__nav a { font-size: 12px; letter-spacing: 0.1em; }
   .sh-header__nav::-webkit-scrollbar { display: none; }
+  .sh-header__nav a { font-size: 12px; letter-spacing: 0.1em; }
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero: statement in Unbounded 800, the last phrase in heart ---------- */
 .sh-hero { position: relative; overflow: hidden; padding: var(--space-16) 0; background: var(--paper); }
-.sh-hero__inner { position: relative; max-width: 760px; }
-.sh-hero__title { margin: var(--space-3) 0 0; font-family: var(--font-display); font-size: clamp(2.75rem, 6vw, 4.5rem); line-height: 1; font-weight: 500; letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; }
-.sh-hero__title em { font-style: italic; font-weight: 400; color: var(--earth); }
-.sh-hero__lead { max-width: var(--measure); margin: var(--space-6) 0 0; font-size: 21px; line-height: 1.6; color: var(--ink-soft); text-wrap: pretty; }
+.sh-hero__inner { position: relative; max-width: 820px; }
+.sh-hero__title { margin: var(--space-3) 0 0; font-family: var(--font-display); font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1.02; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.sh-hero__title em { font-style: normal; color: var(--heart); }
+.sh-hero__lead { max-width: var(--measure); margin: var(--space-6) 0 0; font-size: 20px; line-height: 1.55; color: var(--ink-soft); text-wrap: pretty; }
 .sh-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
 @media (min-width: 900px) { .sh-hero { padding: var(--space-24) 0; } }
-/* Paper grain: a fractal-noise layer multiplied over the ground. */
-.sh-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply;
+/* Paper grain: a fractal-noise layer multiplied over the ground; soft-light at night. */
+.sh-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.3; mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='none'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='6' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noise)'/></svg>"); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .sh-grain { mix-blend-mode: soft-light; opacity: 0.35; } }
-:root[data-theme='night'] .sh-grain { mix-blend-mode: soft-light; opacity: 0.35; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .sh-grain { mix-blend-mode: soft-light; opacity: 0.3; } }
+:root[data-theme='night'] .sh-grain { mix-blend-mode: soft-light; opacity: 0.3; }
 
-/* ---------- Page head (new): eyebrow, h1, badge, lead for inner pages ---------- */
+/* ---------- Page head: eyebrow, h1, badge, lead for inner pages ---------- */
 .sh-page-head { position: relative; overflow: hidden; padding: var(--space-16) 0 var(--space-12); border-bottom: 1px solid var(--rule); }
 .sh-page-head__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
 
-/* ---------- Forms (new): SignupForm and ContactForm ---------- */
+/* ---------- Forms ---------- */
 .sh-form { display: grid; gap: var(--space-4); max-width: 560px; }
 .sh-form--inline { grid-template-columns: 1fr; }
 @media (min-width: 560px) { .sh-form--inline { grid-template-columns: 1fr auto; align-items: end; } }
 .sh-field { display: grid; gap: var(--space-1); }
-.sh-label-text { font-size: 13px; line-height: 1.2; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); }
-.sh-deep .sh-label-text { color: var(--on-air-deep); }
+.sh-label-text { font-size: 13px; line-height: 1.2; font-weight: 600; letter-spacing: 0.03em; color: var(--ink-soft); }
+.sh-deep .sh-label-text { color: var(--on-deep); }
 .sh-input, .sh-select, .sh-textarea { width: 100%; padding: var(--space-3) var(--space-4); font: inherit; font-size: 16px; line-height: 1.4; color: var(--ink);
   background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-sm); transition: border-color 180ms ease; }
 .sh-input:hover, .sh-select:hover, .sh-textarea:hover { border-color: var(--ink-muted); }
-.sh-input:focus-visible, .sh-select:focus-visible, .sh-textarea:focus-visible { border-color: var(--earth); }
+.sh-input:focus-visible, .sh-select:focus-visible, .sh-textarea:focus-visible { border-color: var(--heart); }
 .sh-input::placeholder, .sh-textarea::placeholder { color: var(--ink-muted); }
 .sh-textarea { min-height: 160px; resize: vertical; }
 .sh-select { appearance: none; padding-right: var(--space-12);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23645c54' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b5b63' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
   background-repeat: no-repeat; background-position: right var(--space-4) center; }
 .sh-form__note { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-muted); }
-.sh-deep .sh-form__note { color: var(--on-air-deep); }
+.sh-deep .sh-form__note { color: var(--on-deep); }
 .sh-form__status { margin: 0; font-size: 15px; font-weight: 600; }
 .sh-form__status[data-state='error'] { color: var(--error); }
 .sh-form__status[data-state='done'] { color: var(--ink); }
-.sh-deep .sh-form__status[data-state='done'] { color: var(--on-air-deep); }
+.sh-deep .sh-form__status[data-state='done'] { color: var(--on-deep); }
 .sh-hp { position: absolute; left: -9999px; }
 
-/* ---------- BookCard (new): the house card holding a book's own art ---------- */
+/* ---------- BookCard: the house card holding a book's own art ---------- */
 .sh-book { display: grid; grid-template-rows: auto 1fr; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-md); overflow: hidden; transition: border-color 180ms ease; }
-.sh-book:hover { border-color: var(--ink-muted); }
+.sh-book:hover { border-color: var(--ink); }
 .sh-book__art { aspect-ratio: 1200 / 630; overflow: hidden; border-bottom: 1px solid var(--rule); }
 .sh-book__art img { width: 100%; height: 100%; object-fit: cover; }
 .sh-book__body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); }
 .sh-book__titles { margin: 0; }
-.sh-book__es { display: block; margin-top: var(--space-1); font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 18px; color: var(--ink-soft); }
+.sh-book__es { display: block; margin-top: var(--space-1); font-family: var(--font-text); font-style: italic; font-weight: 500; font-size: 16px; color: var(--ink-soft); }
 .sh-book__badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.sh-book__text { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.sh-book__text { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
 .sh-book__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin-top: auto; padding-top: var(--space-2); }
 
-/* ---------- NoteList (new): latest essays from Notes ---------- */
+/* ---------- NoteList: essays, hairlines between ---------- */
 .sh-notes { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .sh-notes__item { border-bottom: 1px solid var(--rule); }
 .sh-notes__link { display: grid; gap: var(--space-1); padding: var(--space-6) 0; color: inherit; text-decoration: none; }
-.sh-notes__link:hover .sh-notes__title { color: var(--earth); }
+.sh-notes__link:hover .sh-notes__title { color: var(--heart-ink); }
 .sh-notes__date { font-size: 13px; line-height: 1.5; color: var(--ink-muted); }
-.sh-notes__title { margin: 0; font-family: var(--font-display); font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); transition: color 180ms ease; }
-.sh-notes__summary { margin: 0; max-width: var(--measure); font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.sh-notes__title { margin: 0; font-family: var(--font-display); font-size: 20px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); transition: color 180ms ease; }
+.sh-notes__summary { margin: 0; max-width: var(--measure); font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
 
-/* ---------- Testimonial (new) ---------- */
+/* ---------- Testimonial ---------- */
 .sh-quote { margin: 0; padding: var(--space-6); background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: var(--space-4); }
-.sh-quote blockquote { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink); }
+.sh-quote blockquote { margin: 0; font-size: 17px; line-height: 1.55; color: var(--ink); }
 .sh-quote figcaption { font-size: 13px; line-height: 1.5; color: var(--ink-muted); margin-top: auto; }
 .sh-quote figcaption strong { display: block; font-size: 15px; color: var(--ink); }
 
-/* ---------- Status row (new): one quiet line for a craft not promoted on cards ---------- */
+/* ---------- Status row: one quiet line for a craft without a card ---------- */
 .sh-status-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--rule); font-size: 15px; color: var(--ink-soft); }
 .sh-status-row .sh-card__tile { width: 32px; height: 32px; }
 
-/* ---------- Language block (new): the Spanish text beside the English ---------- */
+/* ---------- Language block: the Spanish text beside the English ---------- */
 .sh-lang { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--rule); max-width: var(--measure); }
 .sh-lang p { margin: var(--space-2) 0 0; color: var(--ink-soft); }
 
-/* ---------- Prose (new): legal pages, the logo essay, about ---------- */
+/* ---------- Prose: legal pages, the logo essay, about ---------- */
 .sh-prose { max-width: var(--measure); }
-/* A container that is also prose keeps the page edge; its children keep the measure. */
 .sh-container.sh-prose { max-width: 1120px; }
 .sh-container.sh-prose > * { max-width: var(--measure); }
 .sh-container.sh-prose > table { max-width: none; }
-.sh-prose h2 { margin: var(--space-12) 0 var(--space-3); font-family: var(--font-display); font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; }
-.sh-prose h3 { margin: var(--space-8) 0 var(--space-2); font-family: var(--font-display); font-size: 20px; line-height: 1.3; font-weight: 600; }
+.sh-prose h2 { margin: var(--space-12) 0 var(--space-3); font-family: var(--font-display); font-size: 22px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; }
+.sh-prose h3 { margin: var(--space-8) 0 var(--space-2); font-family: var(--font-display); font-size: 18px; line-height: 1.3; font-weight: 600; }
 .sh-prose p, .sh-prose ul, .sh-prose ol { margin: var(--space-4) 0 0; }
 .sh-prose li + li { margin-top: var(--space-2); }
 .sh-prose table { width: 100%; margin-top: var(--space-4); border-collapse: collapse; font-size: 15px; }
 .sh-prose th, .sh-prose td { padding: var(--space-2) var(--space-3) var(--space-2) 0; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
-.sh-prose th { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); }
+.sh-prose th { font-size: 13px; font-weight: 600; letter-spacing: 0.03em; color: var(--ink-soft); }
 .sh-prose__updated { font-size: 13px; color: var(--ink-muted); }
 
-/* ---------- Footer (new): the deep surface ---------- */
+/* ---------- Footer: the deep surface ---------- */
 .sh-footer { padding: var(--space-16) 0 var(--space-8); }
 .sh-footer__grid { display: grid; gap: var(--space-8); grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
 .sh-footer__brand { display: grid; gap: var(--space-3); grid-column: 1 / -1; }
 @media (min-width: 900px) { .sh-footer__brand { grid-column: span 2; } }
-.sh-footer__brand .sh-wordmark { color: var(--on-air-deep); }
-.sh-footer__brand .sh-wordmark em { color: var(--on-air-deep); }
-.sh-footer__heading { margin: 0 0 var(--space-3); font-size: 12px; line-height: 1.2; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-air-deep); opacity: 0.85; }
+.sh-footer__brand .sh-wordmark { color: var(--on-deep); }
+.sh-footer__brand .sh-wordmark em { color: var(--heart); }
+.sh-footer__heading { margin: 0 0 var(--space-3); font-size: 12px; line-height: 1.2; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-deep); opacity: 0.85; }
 .sh-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); font-size: 15px; }
 .sh-footer a { text-decoration: none; }
-.sh-footer a:hover { text-decoration: underline; color: var(--on-air-deep); }
-.sh-footer__base { margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid color-mix(in srgb, var(--on-air-deep) 25%, transparent); font-size: 13px; }
+.sh-footer a:hover { text-decoration: underline; color: var(--heart); }
+.sh-footer__base { margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid color-mix(in srgb, var(--on-deep) 25%, transparent); font-size: 13px; }
+
+/* ---------- NetworkGrid: the fields of the professionals Antonio trusts ---------- */
+.sh-network { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.sh-network li { padding: var(--space-4) var(--space-6); background: var(--card); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  font-family: var(--font-display); font-size: 16px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); overflow-wrap: anywhere; }
+.sh-network__rule { margin: var(--space-6) 0 0; font-size: 15px; color: var(--ink-soft); }
+@media (max-width: 559px) { .sh-network li { padding: var(--space-3) var(--space-4); font-size: 14px; } }
+@media (min-width: 900px) { .sh-network { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* ---------- Ground: the mark's geometry as entropy, drawn by WebGL ---------- */
+.sh-ground-host { position: relative; overflow: hidden; }
+.sh-ground-host > .sh-container { position: relative; }
+.sh-ground { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.sh-ground[hidden] { display: none; }
 
 /* ---------- Mark ---------- */
 .sh-mark { flex: none; }
@@ -224,18 +232,3 @@ a:hover { color: var(--earth-deep); }
 }
 @keyframes sh-fade-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .sh-btn, .sh-card, .sh-book, .sh-header__nav a, .sh-input, .sh-notes__title { transition: none; } }
-
-/* ---------- NetworkGrid (new): the fields of the people I can bring in ---------- */
-.sh-network { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-.sh-network li { padding: var(--space-4) var(--space-6); background: var(--card); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-  font-family: var(--font-display); font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); }
-.sh-network__rule { margin: var(--space-6) 0 0; font-size: 15px; color: var(--ink-soft); }
-.sh-network li { overflow-wrap: anywhere; }
-@media (max-width: 559px) { .sh-network li { padding: var(--space-3) var(--space-4); font-size: 17px; } }
-@media (min-width: 900px) { .sh-network { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-
-/* ---------- Ground (new): the mark's geometry as a drifting ground, drawn by WebGL ---------- */
-.sh-ground-host { position: relative; overflow: hidden; }
-.sh-ground-host > .sh-container { position: relative; }
-.sh-ground { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
-.sh-ground[hidden] { display: none; }
