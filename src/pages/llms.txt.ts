@@ -18,7 +18,7 @@ ${SITE.name} (SH&SH) is ${SITE.founder}'s company: one person, in Florida, from 
 ${crafts.map((craft) => `- ${craft.title} (${craft.status}): ${craft.body}`).join('\n')}
 - ${music.title} (${music.status}): ${music.body}
 
-The company is one person with a wide network. When a project needs more than ${SITE.founder}, he brings in or introduces people he knows in these fields: ${network.join(', ')}. When someone else does part of the work, he names them.
+The company is one person with a wide network. When a project needs more than ${SITE.founder}, he brings in or introduces professionals he trusts in the areas where he is not the expert, in these fields: ${network.join(', ')}. When someone else does part of the work, he names them.
 
 To get in touch, use the contact form on the consulting page or email ${SITE.email}.
 

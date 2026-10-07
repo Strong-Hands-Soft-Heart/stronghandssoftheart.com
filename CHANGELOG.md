@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] - 2026-10-07
+
+- "Networking" is not a field: it is the whole network, the professionals Antonio trusts in the areas where he is not the expert. Removed from the grid; the copy says so, with his examples (a copywriter for the copy, a robotics expert for a signage job). Eight fields sit four by two on desktop.
+
 ## [1.1.0] - 2026-10-07
 
 - The network: the company is one person with a wide network, and the site now says so. The hero reads "One person, and the people I know"; a Network section on home and consulting lists the fields of the people Antonio can bring in, by discipline, with the rule "When someone else does part of the work, I name them."

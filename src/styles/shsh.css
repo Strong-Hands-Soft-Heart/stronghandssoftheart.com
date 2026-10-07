@@ -232,4 +232,4 @@ a:hover { color: var(--earth-deep); }
 .sh-network__rule { margin: var(--space-6) 0 0; font-size: 15px; color: var(--ink-soft); }
 .sh-network li { overflow-wrap: anywhere; }
 @media (max-width: 559px) { .sh-network li { padding: var(--space-3) var(--space-4); font-size: 17px; } }
-@media (min-width: 760px) { .sh-network { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .sh-network { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
