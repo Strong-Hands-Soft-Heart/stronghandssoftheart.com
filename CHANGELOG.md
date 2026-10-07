@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.1.1] - 2026-10-07
+
+- The two picture books' source links point at their new home in the company's GitHub organization, Strong-Hands-Soft-Heart. The company publishes and hosts the books, so their repos moved there.
+
 ## [2.1.0] - 2026-10-07
 
 - Vercel Web Analytics: `@vercel/analytics` and its Astro component at the end of every page. It counts page views without cookies, beside Google Analytics. The privacy policy names it under third-party services.
