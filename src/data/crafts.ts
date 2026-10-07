@@ -42,7 +42,7 @@ export const crafts: Craft[] = [
     icon: 'code',
     title: 'AI and Engineering Consulting',
     status: 'Available',
-    body: 'Systems and product architecture, AI enablement, hands-on engineering, and advisory for founders and engineering leads.',
+    body: 'Architecture, AI enablement, hands-on engineering and advisory. When a project needs more than me, I bring in people I know.',
     linkLabel: 'Consulting',
     href: '/consulting',
   },

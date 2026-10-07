@@ -6,6 +6,8 @@ import CraftCard from '../components/CraftCard.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import PageHead from '../components/PageHead.astro';
 import Testimonial from '../components/Testimonial.astro';
+import NetworkGrid from '../components/NetworkGrid.astro';
+import { network, networkRule } from '../data/network';
 import { reading, selectedWork, services, steps, testimonials } from '../data/consulting';
 ---
 
@@ -17,7 +19,7 @@ import { reading, selectedWork, services, steps, testimonials } from '../data/co
     eyebrow="Consulting"
     title="AI and Engineering Consulting"
     badge="Available"
-    lead="I help teams design, ship and stabilize software, from AI tools to core product platforms. I am a technical program manager and former CTO, and I still write code. I work with founders, product leads, engineering managers and engineers."
+    lead="I help teams design, ship and stabilize software, from AI tools to core product platforms. I am a technical program manager and former CTO, and I still write code. I work with founders, product leads, engineering managers and engineers. When a project needs more than me, I bring in people I know."
   >
     <div class="sh-hero__actions">
       <Button href="#contact">Write to Me</Button>
@@ -47,7 +49,22 @@ import { reading, selectedWork, services, steps, testimonials } from '../data/co
     </div>
   </section>
 
-  <section class="sh-section" id="approach">
+  <section class="sh-section" id="network">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>The Network</Eyebrow>
+        <h2 class="sh-h2">When the Work Needs More Than Me</h2>
+        <p class="sh-section__lead">
+          Tell me what you need. I will tell you what I can do myself, and who I know for the rest.
+          Then I bring them in, or I introduce you.
+        </p>
+      </div>
+      <NetworkGrid fields={network} />
+      <p class="sh-network__rule">{networkRule}</p>
+    </div>
+  </section>
+
+  <section class="sh-section sh-section--alt" id="approach">
     <div class="sh-container">
       <div class="sh-section__head sh-reveal">
         <Eyebrow>How I Work</Eyebrow>
@@ -65,7 +82,7 @@ import { reading, selectedWork, services, steps, testimonials } from '../data/co
     </div>
   </section>
 
-  <section class="sh-section sh-section--alt" id="work">
+  <section class="sh-section" id="work">
     <div class="sh-container">
       <div class="sh-section__head sh-reveal">
         <Eyebrow>Selected Work</Eyebrow>
@@ -81,7 +98,7 @@ import { reading, selectedWork, services, steps, testimonials } from '../data/co
     </div>
   </section>
 
-  <section class="sh-section" id="testimonials">
+  <section class="sh-section sh-section--alt" id="testimonials">
     <div class="sh-container">
       <div class="sh-section__head sh-reveal">
         <Eyebrow>Recommendations</Eyebrow>
@@ -96,7 +113,7 @@ import { reading, selectedWork, services, steps, testimonials } from '../data/co
     </div>
   </section>
 
-  <section class="sh-section sh-section--alt" id="reading">
+  <section class="sh-section" id="reading">
     <div class="sh-container sh-prose">
       <Eyebrow>Reading</Eyebrow>
       <h2 class="sh-h2" style="margin-top:var(--space-2)">

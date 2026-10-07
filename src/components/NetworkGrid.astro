@@ -1,0 +1,14 @@
+---
+/** The fields of the people I can bring in: names of disciplines in a hairline grid. No headcount, no unnamed "we". */
+interface Props {
+  fields: string[];
+}
+
+const { fields } = Astro.props;
+---
+
+<ul class="sh-network">
+  {fields.map((field) => (
+    <li>{field}</li>
+  ))}
+</ul>

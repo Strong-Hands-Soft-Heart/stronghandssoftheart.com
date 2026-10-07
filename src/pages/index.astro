@@ -8,9 +8,11 @@ import Eyebrow from '../components/Eyebrow.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import NoteList from '../components/NoteList.astro';
+import NetworkGrid from '../components/NetworkGrid.astro';
 import SignupForm from '../components/SignupForm.astro';
 import { books } from '../data/books';
 import { crafts, music } from '../data/crafts';
+import { network, networkLead, networkRule } from '../data/network';
 import { latestNotes } from '../utils/notes';
 
 const notes = await latestNotes(3);
@@ -20,12 +22,12 @@ const notes = await latestNotes(3);
   <Hero
     eyebrow="Strong Hands, Soft Heart LLC"
     title="Soap, books and software."
-    emphasis="Made by one person in Florida."
-    lead="This page says what I make, what is ready, and what is not. Nothing here is a promise."
+    emphasis="One person, and the people I know."
+    lead="I make soap, books and software in Florida, and I know people in many other fields. This page says what is ready, what is not, and who I can bring in. Nothing here is a promise."
   >
     <Button href="#updates">Get Soap Updates</Button>
-    <Button variant="outline" href="/books">
-      Read the Books
+    <Button variant="outline" href="/consulting#contact">
+      Tell Me What You Need
     </Button>
   </Hero>
 
@@ -56,6 +58,23 @@ const notes = await latestNotes(3);
         <Badge tone="air">{music.status}</Badge>
         <span>{music.body}</span>
       </p>
+    </div>
+  </section>
+
+  <section class="sh-section" id="network">
+    <div class="sh-container">
+      <div class="sh-section__head sh-reveal">
+        <Eyebrow>The Network</Eyebrow>
+        <h2 class="sh-h2">One Person, and the People I Know</h2>
+        <p class="sh-section__lead">{networkLead}</p>
+      </div>
+      <NetworkGrid fields={network} />
+      <p class="sh-network__rule">{networkRule}</p>
+      <div class="sh-hero__actions">
+        <Button variant="outline" href="/consulting#contact">
+          Tell Me What You Need
+        </Button>
+      </div>
     </div>
   </section>
 
@@ -104,24 +123,6 @@ const notes = await latestNotes(3);
       <div class="sh-hero__actions">
         <Button variant="outline" href="/notes">
           More from Notes
-        </Button>
-      </div>
-    </div>
-  </section>
-
-  <section class="sh-section" id="consulting">
-    <div class="sh-container">
-      <div class="sh-section__head sh-reveal">
-        <Eyebrow>Consulting</Eyebrow>
-        <h2 class="sh-h2">AI and Engineering Consulting</h2>
-        <p class="sh-section__lead">
-          I help teams design, ship and stabilize software, from AI tools to core product platforms.
-          I am a technical program manager and former CTO, and I still write code.
-        </p>
-      </div>
-      <div class="sh-hero__actions" style="margin-top:0">
-        <Button variant="outline" href="/consulting">
-          Services and Contact
         </Button>
       </div>
     </div>

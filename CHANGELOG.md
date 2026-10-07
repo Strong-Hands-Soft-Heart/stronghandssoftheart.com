@@ -2,6 +2,13 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-10-07
+
+- The network: the company is one person with a wide network, and the site now says so. The hero reads "One person, and the people I know"; a Network section on home and consulting lists the fields of the people Antonio can bring in, by discipline, with the rule "When someone else does part of the work, I name them."
+- Contact form topics add "A Project That Needs a Team" and "An Introduction".
+- Consulting services sit two by two; the two-column grid is two columns from 760px up.
+- llms.txt describes the network.
+
 ## [1.0.0] - 2026-10-07
 
 A new site, built from the SH&SH design system. It replaces the Next.js marketing site (`Strong-Hands-Soft-Heart/marketing-website`) and the separate consulting site (`consulting.stronghandssoftheart.com`).

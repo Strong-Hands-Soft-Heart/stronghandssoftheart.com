@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { BOOK_LICENSE, books } from '../data/books';
 import { services } from '../data/consulting';
 import { crafts, music } from '../data/crafts';
+import { network } from '../data/network';
 import { NOTES_URL, SITE } from '../config/site';
 
 /** `/llms.txt` (https://llmstxt.org): the site for AI agents, built from the same data as the pages. */
@@ -16,6 +17,8 @@ ${SITE.name} (SH&SH) is ${SITE.founder}'s company: one person, in Florida, from 
 
 ${crafts.map((craft) => `- ${craft.title} (${craft.status}): ${craft.body}`).join('\n')}
 - ${music.title} (${music.status}): ${music.body}
+
+The company is one person with a wide network. When a project needs more than ${SITE.founder}, he brings in or introduces people he knows in these fields: ${network.join(', ')}. When someone else does part of the work, he names them.
 
 To get in touch, use the contact form on the consulting page or email ${SITE.email}.
 
