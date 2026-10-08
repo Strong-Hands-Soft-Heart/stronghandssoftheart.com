@@ -30,8 +30,7 @@ export function indexNow(): AstroIntegration {
         }
         try {
           const keyLocation = new URL(`/${KEY}.txt`, site).href;
-          const signal = AbortSignal.timeout(TIMEOUT_MS);
-          const live = await fetch(keyLocation, { signal })
+          const live = await fetch(keyLocation, { signal: AbortSignal.timeout(TIMEOUT_MS) })
             .then((res) => (res.ok ? res.text() : ''))
             .catch(() => '');
           if (live.trim() !== KEY) {
@@ -50,23 +49,26 @@ export function indexNow(): AstroIntegration {
           }
           const body = JSON.stringify({ host: new URL(site).host, key: KEY, keyLocation, urlList });
           for (const endpoint of ENDPOINTS) {
-            const res = await fetch(endpoint, {
-              method: 'POST',
-              headers: { 'content-type': 'application/json; charset=utf-8' },
-              body,
-              signal,
-            });
-            if (res.status === 200 || res.status === 202) {
-              logger.info(`submitted ${urlList.length} URLs to ${new URL(endpoint).host} (${res.status})`);
-              return;
-            }
-            // 403: the shared endpoint could not verify the key yet; Bing directly often can.
-            if (res.status !== 403) {
-              logger.warn(`failed (${res.status} from ${new URL(endpoint).host})`);
-              return;
+            const host = new URL(endpoint).host;
+            try {
+              const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json; charset=utf-8' },
+                body,
+                signal: AbortSignal.timeout(TIMEOUT_MS),
+              });
+              if (res.status === 200 || res.status === 202) {
+                logger.info(`submitted ${urlList.length} URLs to ${host} (${res.status})`);
+                return;
+              }
+              // 403: the shared endpoint could not verify the key yet; Bing directly often can.
+              logger.warn(`failed (${res.status} from ${host})`);
+            } catch (error) {
+              logger.warn(
+                `failed: ${error instanceof Error ? error.message : String(error)} (${host})`,
+              );
             }
           }
-          logger.warn('failed (403 from both endpoints)');
         } catch (error) {
           logger.warn(`failed: ${error instanceof Error ? error.message : String(error)}`);
         }

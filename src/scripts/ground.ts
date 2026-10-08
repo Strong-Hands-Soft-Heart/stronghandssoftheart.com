@@ -3,7 +3,7 @@
 // work and a token change trickles down. The text block inside the host
 // ([data-sh-shield], else the container) is passed to the shader, which thins
 // the strokes under it. Off under reduced motion (one still frame), paused
-// when off-screen or the tab is hidden, hidden when WebGL fails.
+// when off-screen or the tab is hidden, hidden when WebGL fails or the context is lost.
 import frag from '../../design-system/ground.frag?raw';
 
 const VERT = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.0,1.0);}';
@@ -124,6 +124,7 @@ function mount(canvas: HTMLCanvasElement) {
 
   const start = performance.now();
   const draw = () => {
+    if (gl.isContextLost()) return;
     gl.uniform1f(uTime, motion.matches ? 7 : (performance.now() - start) / 1000);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
@@ -133,7 +134,7 @@ function mount(canvas: HTMLCanvasElement) {
   let last = 0;
   const loop = (now: number) => {
     frame = 0;
-    if (!visible || document.hidden || motion.matches) return;
+    if (!visible || document.hidden || motion.matches || canvas.hidden) return;
     if (now - last >= 1000 / FPS) {
       last = now;
       draw();
@@ -144,11 +145,19 @@ function mount(canvas: HTMLCanvasElement) {
     if (!frame) frame = requestAnimationFrame(loop);
   };
   const still = () => {
+    if (canvas.hidden || gl.isContextLost()) return;
     resize();
     applyPalette();
     draw();
     wake();
   };
+
+  canvas.addEventListener('webglcontextlost', () => {
+    canvas.hidden = true;
+    visible = false;
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0;
+  });
 
   const ro = new ResizeObserver(still);
   ro.observe(canvas);
@@ -158,7 +167,7 @@ function mount(canvas: HTMLCanvasElement) {
   if (shield) ro.observe(shield);
   new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
-    if (visible) wake();
+    if (visible && !canvas.hidden) wake();
   }).observe(canvas);
   document.addEventListener('visibilitychange', wake);
   motion.addEventListener('change', still);

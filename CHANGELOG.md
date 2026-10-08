@@ -2,6 +2,19 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.3.1] - 2026-10-08
+
+- Fixed: Vercel Analytics recorded `/index.html` and `/consulting.html`. Canonicals already used the served path. Analytics now uses the same path.
+- Fixed: leftover paths on `consulting.stronghandssoftheart.com` all redirected to `/consulting`. They now keep the path on www (`/privacy-policy` stays `/privacy-policy`). The host root still goes to `/consulting`.
+- Pages send `nosniff`, `Referrer-Policy`, `X-Frame-Options: DENY`, and `frame-ancestors 'none'`.
+- The main nav marks the current page. It now strips `.html` the same way canonicals do.
+- The 404 document has `noindex`. Unknown paths still return HTTP 404.
+- The Notes feed fetch has a 12s timeout. Invalid dates are skipped.
+- IndexNow gives each request its own timeout. A failed shared endpoint still tries Bing.
+- README stack line: sign-up posts to Formspree until the Kit form ID is set.
+- Favicon: white stroke in dark chrome. Day ink is unchanged.
+- Ground hides the canvas if the WebGL context is lost.
+
 ## [2.3.0] - 2026-10-07
 
 - Home carries a `WebSite` node (`/#website`): the site's name, "Strong Hands, Soft Heart", with SH&SH and the legal name as alternates. Google can show it above the site's results instead of the bare domain. Its publisher is the Organization ID. The structured data is now one `@graph`.

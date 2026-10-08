@@ -10,7 +10,7 @@ Live: [www.stronghandssoftheart.com](https://www.stronghandssoftheart.com)
 - Plain CSS from the SH&SH design system (`src/styles/shsh.css`); no CSS framework
 - The Ground: a WebGL fragment shader (`design-system/ground.frag`, a copy of the design system's) draws the mark's geometry as entropy behind the hero, page heads and deep sections, thinned under the text block; vanilla WebGL in `src/scripts/ground.ts`, no library
 - Self-hosted Unbounded (display) and Geist (text), variable, OFL (`public/fonts/`)
-- Forms post straight to [Kit](https://kit.com) (email list) and [Formspree](https://formspree.io) (contact); no server code, no API keys
+- Contact posts to [Formspree](https://formspree.io). Sign-up posts to Formspree while the Kit form ID is empty, then to [Kit](https://kit.com) when that ID is set. No server code, no API keys
 - Deployed on Vercel
 
 ## Run it

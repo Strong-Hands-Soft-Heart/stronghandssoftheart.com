@@ -2,20 +2,22 @@
 import '../styles/shsh.css';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
-import Analytics from '@vercel/analytics/astro';
+import WebAnalytics from '../components/WebAnalytics.astro';
 import { GA_ID, SITE } from '../config/site';
+import { cleanPath as servedPath } from '../utils/path';
 
 interface Props {
   title?: string;
   description?: string;
   /** Page language; product and book pages carry Spanish blocks marked lang="es". */
   lang?: string;
+  /** Robots directive. The 404 document sets noindex. */
+  robots?: string;
 }
 
-const { title, description = SITE.description, lang = 'en' } = Astro.props;
+const { title, description = SITE.description, lang = 'en', robots } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name}: soap, books and software`;
-// build.format is 'file', so pathnames end in .html at build time; Vercel serves them without it.
-const cleanPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
+const cleanPath = servedPath(Astro.url.pathname);
 const canonical = new URL(cleanPath, SITE.url).href;
 const ogImage = new URL('/og.png', SITE.url).href;
 
@@ -54,6 +56,7 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -106,7 +109,7 @@ const structuredData = {
       <slot />
     </main>
     <SiteFooter />
-    <Analytics />
+    <WebAnalytics path={cleanPath} />
     <script>
       import '../scripts/forms';
       import '../scripts/ground';
