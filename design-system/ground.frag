@@ -4,6 +4,7 @@
 // equator in strawberry. The mark holds, then dissolves back into the drift,
 // and the next one forms. Every colour is a token the page passes in. The
 // ground thins itself inside the text block (u_shield) so text keeps contrast.
+// On a thank-you the page asks every mark to gather at once (u_gather).
 // Source of truth: the SH&SH design system, components/ground.frag.
 precision mediump float;
 
@@ -14,6 +15,7 @@ uniform vec3 u_ground;   // paper, or deep
 uniform vec3 u_stroke;   // ink, or on-deep
 uniform vec3 u_heart;    // heart: the equator of an assembled mark
 uniform vec4 u_shield;   // the text block, CSS px, centred, y up: x0 y0 x1 y1; x1 <= x0 means none
+uniform float u_gather;  // seconds since a thank-you asked the ground to gather; < 0 means it has not
 
 const int STROKES = 40;  // 8 marks × 5 strokes
 const float CYCLE = 18.0;
@@ -65,6 +67,13 @@ void main() {
     // Order envelope: chaos, assemble over 3s, hold 6s, dissolve over 3s.
     float cyc = mod(t + hash(fm + 3.0) * CYCLE, CYCLE);
     float s = smoothstep(2.0, 5.0, cyc) * (1.0 - smoothstep(11.0, 14.0, cyc));
+
+    // Gather: on a thank-you, every mark assembles at once in a quick cascade,
+    // holds, and lets go back into the drift.
+    if (u_gather >= 0.0) {
+      float g = u_gather - hash(fm + 5.0) * 1.2;
+      s = max(s, smoothstep(0.0, 1.6, g) * (1.0 - smoothstep(7.0, 10.0, g)));
+    }
 
     // Ordered endpoints: an edge of the diamond, or its equator.
     vec2 o0, o1;

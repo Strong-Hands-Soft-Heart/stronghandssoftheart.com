@@ -103,6 +103,15 @@ function mount(canvas: HTMLCanvasElement) {
   const uDpr = loc('u_dpr');
   const uTime = loc('u_time');
   const uShield = loc('u_shield');
+  const uGather = loc('u_gather');
+
+  // A thank-you ([data-sh-gather]) that the URL points at makes this Ground gather once.
+  const thanks = canvas.parentElement?.querySelector<HTMLElement>('[data-sh-gather]');
+  let gatherFrom = -1;
+  const checkGather = () => {
+    gatherFrom = thanks?.matches(':target') ? performance.now() : -1;
+  };
+  checkGather();
 
   const applyPalette = () => {
     for (const [name, rgb] of Object.entries(palette(variant))) gl.uniform3fv(loc(name), rgb);
@@ -126,6 +135,9 @@ function mount(canvas: HTMLCanvasElement) {
   const draw = () => {
     if (gl.isContextLost()) return;
     gl.uniform1f(uTime, motion.matches ? 7 : (performance.now() - start) / 1000);
+    // Under reduced motion a gathered Ground is one still frame with every mark assembled.
+    const gather = gatherFrom < 0 ? -1 : motion.matches ? 3 : (performance.now() - gatherFrom) / 1000;
+    gl.uniform1f(uGather, gather);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
@@ -170,6 +182,10 @@ function mount(canvas: HTMLCanvasElement) {
     if (visible && !canvas.hidden) wake();
   }).observe(canvas);
   document.addEventListener('visibilitychange', wake);
+  window.addEventListener('hashchange', () => {
+    checkGather();
+    still();
+  });
   motion.addEventListener('change', still);
   dark.addEventListener('change', still);
   new MutationObserver(still).observe(document.documentElement, {

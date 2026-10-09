@@ -2,6 +2,13 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.4.0] - 2026-10-08
+
+- The soap sign-up posts to Kit (form `10021397`, "Soap and launch updates") instead of Formspree. Kit sends a confirmation email first, so the form answers "Check your inbox to confirm your email."
+- A thank-you on `/soap#thank-you`, where Kit sends readers after they confirm. It takes the place of the sign-up section: the mark draws itself, "Thank You." in heart, a note from Antonio, a link to the free books, and the same note in Spanish. CSS `:target` shows it, so it works without JavaScript.
+- The Ground can gather: when the URL points at a `[data-sh-gather]` element in its host, every mark assembles at once in a quick cascade, holds, and returns to the drift. Under reduced motion it is one still frame with every mark assembled. New uniform `u_gather` in `design-system/ground.frag`.
+- `KIT_FORM_ID` is typed `string`, so `astro check` accepts a set ID.
+
 ## [2.3.1] - 2026-10-08
 
 - Fixed: Vercel Analytics recorded `/index.html` and `/consulting.html`. Canonicals already used the served path. Analytics now uses the same path.

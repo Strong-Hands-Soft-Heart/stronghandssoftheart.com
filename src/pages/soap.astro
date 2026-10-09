@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
 import Ground from '../components/Ground.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import PageHead from '../components/PageHead.astro';
@@ -46,6 +47,42 @@ import SignupForm from '../components/SignupForm.astro';
   <section class="sh-section sh-deep sh-ground-host" id="updates">
     <Ground variant="deep" />
     <div class="sh-container">
+      {/* Kit sends readers here after they confirm their email: /soap#thank-you. */}
+      <div class="sh-thanks" id="thank-you" data-sh-gather>
+        <svg class="sh-thanks__mark" viewBox="0 0 100 100" width="64" height="64" aria-hidden="true">
+          <polygon points="50,2.5 97.5,50 50,97.5 2.5,50" pathLength="1"></polygon>
+          <line x1="2.5" y1="50" x2="97.5" y2="50" pathLength="1"></line>
+        </svg>
+        <Eyebrow>Email Confirmed</Eyebrow>
+        <h2 class="sh-h2"><em>Thank You.</em> You Are on the List.</h2>
+        <p class="sh-section__lead">
+          The soap is not for sale yet, and you signed up anyway. I am grateful for that.
+        </p>
+        <p class="sh-section__lead">
+          I plan to write when the first bars are ready. They are planned for late 2026.
+        </p>
+        <p class="sh-section__lead">
+          Until then, the two picture books are free to read. And if you want to tell me which scent
+          you hope for, write to <a href="mailto:hello@stronghandssoftheart.com">hello@stronghandssoftheart.com</a>.
+        </p>
+        <p class="sh-thanks__sign">Antonio</p>
+        <div class="sh-thanks__actions">
+          <Button href="/books">Read the Books</Button>
+        </div>
+        <div class="sh-thanks__es" lang="es">
+          <Eyebrow>En español</Eyebrow>
+          <p><strong>Gracias. Ya estás en la lista.</strong></p>
+          <p>
+            El jabón todavía no está a la venta, y aun así te suscribiste. Te lo agradezco. Pienso
+            escribirte cuando las primeras barras estén listas; están planificadas para finales de
+            2026.
+          </p>
+          <p>
+            Mientras tanto, los dos cuentos se leen gratis. Y si quieres decirme qué aroma te
+            gustaría, escríbeme a hello@stronghandssoftheart.com.
+          </p>
+        </div>
+      </div>
       <div class="sh-section__head">
         <Eyebrow>Soap Updates</Eyebrow>
         <h2 class="sh-h2">Hear When the First Bars Are Ready</h2>

@@ -51,6 +51,8 @@ To change tokens: edit them in the design system, copy `project/tokens.json` to 
 
 `KIT_FORM_ID` in `src/config/site.ts` holds the Kit form ID. While it is empty, the sign-up form posts to Formspree, and those addresses are imported into Kit later.
 
+Kit sends readers to `/soap#thank-you` after they confirm their email. That address shows the thank-you in place of the soap page's sign-up section, and the section's Ground gathers.
+
 ## License
 
 Code: MIT. Text, the mark, and the book art: © Strong Hands, Soft Heart LLC; see the [terms](https://www.stronghandssoftheart.com/terms-of-service).

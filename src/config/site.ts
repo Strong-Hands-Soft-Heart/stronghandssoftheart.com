@@ -17,7 +17,7 @@ export const SITE = {
  * While it is empty, the signup form posts to Formspree instead, and the list is
  * imported into Kit later.
  */
-export const KIT_FORM_ID = '';
+export const KIT_FORM_ID: string = '10021397';
 
 /** Formspree form used by the contact form (and by signups until Kit is set). */
 export const FORMSPREE_FORM_ID = 'mzzrdgpe';
