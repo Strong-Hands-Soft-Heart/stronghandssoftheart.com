@@ -2,6 +2,11 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.5.0] - 2026-10-14
+
+- Uplift, a Tower Game, joins What I Make as a fourth card: a tower-building game that plays in the browser, In progress, free to play while it is tested, with a link to uplifttowergame.com. Its icon is `layers`, already in the set. SH&SH is its publisher; the game's own structured data names the company.
+- The site description and `/llms.txt` mention the game; `/llms.txt` links the game's own `llms.txt`.
+
 ## [2.4.0] - 2026-10-08
 
 - The soap sign-up posts to Kit (form `10021397`, "Soap and launch updates") instead of Formspree. Kit sends a confirmation email first, so the form answers "Check your inbox to confirm your email."

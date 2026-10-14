@@ -31,6 +31,14 @@ export const crafts: Craft[] = [
     href: '/books',
   },
   {
+    icon: 'layers',
+    title: 'Uplift, a Tower Game',
+    status: 'In progress',
+    body: 'A tower-building game that plays in your browser on a computer: build a tower floor by floor and keep the elevators moving. Free to play while I test it.',
+    linkLabel: 'Play Uplift',
+    href: 'https://uplifttowergame.com',
+  },
+  {
     icon: 'code',
     title: 'AI and Engineering Consulting',
     status: 'Available',

@@ -40,6 +40,7 @@ ${BOOK_LICENSE}
 ## Related
 
 - [Notes](${NOTES_URL}/llms.txt): every essay, with a markdown copy of each
+- [Uplift](https://uplifttowergame.com/llms.txt): the tower-building game, in progress
 - [Code](${SITE.founderUrl}/code): the founder's projects and open source
 - [${SITE.founder}](${SITE.founderUrl}/llms.txt): all of the founder's links
 
