@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.5.1] - 2026-10-26
+
+- `/llms.txt` links the founder's Projects page directly (the old `/code` address only redirected there), names Lifesworn as his own game, not one the company publishes, and calls antoniwan.online his site rather than a page of links.
+
 ## [2.5.0] - 2026-10-14
 
 - Uplift, a Tower Game, joins What I Make as a fourth card: a tower-building game that plays in the browser, In progress, free to play while it is tested, with a link to uplifttowergame.com. Its icon is `layers`, already in the set. SH&SH is its publisher; the game's own structured data names the company.

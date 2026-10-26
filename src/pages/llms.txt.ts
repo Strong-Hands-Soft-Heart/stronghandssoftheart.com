@@ -41,8 +41,8 @@ ${BOOK_LICENSE}
 
 - [Notes](${NOTES_URL}/llms.txt): every essay, with a markdown copy of each
 - [Uplift](https://uplifttowergame.com/llms.txt): the tower-building game, in progress
-- [Code](${SITE.founderUrl}/code): the founder's projects and open source
-- [${SITE.founder}](${SITE.founderUrl}/llms.txt): all of the founder's links
+- [Projects](${SITE.founderUrl}/projects): the founder's own projects, including Lifesworn (https://lifesworn.com/llms.txt), his action RPG, which the company does not publish
+- [${SITE.founder}](${SITE.founderUrl}/llms.txt): the founder's own site
 
 ## Optional
 
