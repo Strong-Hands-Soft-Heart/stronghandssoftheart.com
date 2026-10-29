@@ -3,6 +3,7 @@ import '../styles/shsh.css';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import WebAnalytics from '../components/WebAnalytics.astro';
+import Stats from '../components/Stats.astro';
 import { GA_ID, SITE } from '../config/site';
 import { cleanPath as servedPath } from '../utils/path';
 
@@ -58,6 +59,7 @@ const structuredData = {
     <meta name="description" content={description} />
     {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -110,6 +112,7 @@ const structuredData = {
     </main>
     <SiteFooter />
     <WebAnalytics path={cleanPath} />
+    <Stats />
     <script>
       import '../scripts/forms';
       import '../scripts/ground';

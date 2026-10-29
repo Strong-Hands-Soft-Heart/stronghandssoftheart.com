@@ -2,6 +2,11 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.6.0] - 2026-10-29
+
+- Count visits in Stats, the founder's self-hosted Umami shared with his other sites, next to Vercel Web Analytics: no cookies, no stored IP addresses, Do Not Track respected, and previews not counted. Clicks to other sites are recorded as an `outbound` event. It loads only when the build has `PUBLIC_UMAMI_HOST` and `PUBLIC_UMAMI_WEBSITE_ID`. The privacy policy does not name it yet; that text is Antonio's to change.
+- Add `favicon.ico` (16, 32, and 48 px, drawn from `favicon.svg`) for the services that can't read an SVG icon, such as the icon lookup Stats uses.
+
 ## [2.5.1] - 2026-10-26
 
 - `/llms.txt` links the founder's Projects page directly (the old `/code` address only redirected there), names Lifesworn as his own game, not one the company publishes, and calls antoniwan.online his site rather than a page of links.
