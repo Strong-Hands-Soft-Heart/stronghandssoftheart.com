@@ -3,6 +3,7 @@ import '../styles/shsh.css';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import WebAnalytics from '../components/WebAnalytics.astro';
+import Stats from '../components/Stats.astro';
 import { GA_ID, SITE } from '../config/site';
 import { cleanPath as servedPath } from '../utils/path';
 
@@ -110,6 +111,7 @@ const structuredData = {
     </main>
     <SiteFooter />
     <WebAnalytics path={cleanPath} />
+    <Stats />
     <script>
       import '../scripts/forms';
       import '../scripts/ground';
