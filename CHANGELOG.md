@@ -2,6 +2,14 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.7.0] - 2026-10-29
+
+- Count each call to action in Stats: every `Button` takes a `cta` name and sends a `cta` click event with that `label` (Get Soap Updates, Tell Me What You Need, Write to Me, Send Message, each book's Read and Source, each card's link, and the rest), and so do the email links. One that leaves the site also carries `to` and `url` instead of a second `outbound` event. The privacy line now says it counts button clicks too. The founder's Tasteless page lists every label beside the site's views, so unused ones can go.
+
+## [2.6.1] - 2026-10-29
+
+- The privacy policy names Umami, self-hosted by us, among the services the site uses: it counts page views and clicks to other sites without cookies or storing IP addresses, and honors Do Not Track. Antonio asked for the line.
+
 ## [2.6.0] - 2026-10-29
 
 - Count visits in Stats, the founder's self-hosted Umami shared with his other sites, next to Vercel Web Analytics: no cookies, no stored IP addresses, Do Not Track respected, and previews not counted. Clicks to other sites are recorded as an `outbound` event. It loads only when the build has `PUBLIC_UMAMI_HOST` and `PUBLIC_UMAMI_WEBSITE_ID`. The privacy policy does not name it yet; that text is Antonio's to change.

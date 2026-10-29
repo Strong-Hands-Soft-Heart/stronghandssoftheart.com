@@ -20,10 +20,10 @@ const notes = await latestNotes(8);
     lead="Notes is mine, not the company's. It is where I write: essays on fatherhood, philosophy, culture and work, and the recipes we cook at home. Free to read at notes.antoniwan.online."
   >
     <div class="sh-hero__actions">
-      <Button href={NOTES_URL} arrow>
+      <Button href={NOTES_URL} arrow cta="notes-open">
         Read Notes
       </Button>
-      <Button variant="outline" href={`${NOTES_URL}/rss.xml`} arrow>
+      <Button variant="outline" href={`${NOTES_URL}/rss.xml`} arrow cta="notes-rss">
         RSS Feed
       </Button>
     </div>
@@ -43,7 +43,7 @@ const notes = await latestNotes(8);
         </p>
       )}
       <div class="sh-hero__actions">
-        <Button variant="quiet" href={`${NOTES_URL}/everything`} arrow>
+        <Button variant="quiet" href={`${NOTES_URL}/everything`} arrow cta="notes-everything">
           Every Post
         </Button>
       </div>

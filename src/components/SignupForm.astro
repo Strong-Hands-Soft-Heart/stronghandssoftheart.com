@@ -40,7 +40,9 @@ const fieldId = `signup-${Math.random().toString(36).slice(2, 8)}`;
         placeholder="you@example.com"
       />
     </div>
-    <Button type="submit">{button}</Button>
+    <Button type="submit" cta="soap-updates-signup">
+      {button}
+    </Button>
   </div>
   {!kit && (
     <>

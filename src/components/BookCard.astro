@@ -37,10 +37,10 @@ const { book } = Astro.props;
       {book.summaryEs}
     </p>
     <div class="sh-book__actions">
-      <Button variant="outline" href={book.url} arrow>
+      <Button variant="outline" href={book.url} arrow cta={`book-read-${book.slug}`}>
         Read the Book
       </Button>
-      <Button variant="quiet" href={book.repo} arrow>
+      <Button variant="quiet" href={book.repo} arrow cta={`book-source-${book.slug}`}>
         Source
       </Button>
     </div>
