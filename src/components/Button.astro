@@ -9,20 +9,30 @@ interface Props {
   arrow?: boolean;
   type?: 'button' | 'submit';
   class?: string;
+  /** Names this call to action in Stats: a `cta` click event with this `label`. Set it on every action. */
+  cta?: string;
 }
 
-const { variant = 'heart', href, arrow = false, type = 'button', class: className } = Astro.props;
+const {
+  variant = 'heart',
+  href,
+  arrow = false,
+  type = 'button',
+  class: className,
+  cta,
+} = Astro.props;
+const event = cta ? { 'data-umami-event': 'cta', 'data-umami-event-label': cta } : {};
 const external = href ? /^https?:\/\//.test(href) : false;
 const classes = ['sh-btn', `sh-btn--${variant}`, className];
 ---
 
 {href ? (
-  <a href={href} class:list={classes} rel={external ? 'noopener' : undefined}>
+  <a href={href} class:list={classes} rel={external ? 'noopener' : undefined} {...event}>
     <slot />
     {arrow && <Icon name="arrow-up-right" size={14} class="sh-btn__arrow" />}
   </a>
 ) : (
-  <button type={type} class:list={classes}>
+  <button type={type} class:list={classes} {...event}>
     <slot />
     {arrow && <Icon name="arrow-up-right" size={14} class="sh-btn__arrow" />}
   </button>

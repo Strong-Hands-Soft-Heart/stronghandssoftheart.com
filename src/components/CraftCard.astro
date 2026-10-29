@@ -31,7 +31,15 @@ const external = href ? /^https?:\/\//.test(href) : false;
     <slot />
   </p>
   {linkLabel && href && (
-    <Button variant="quiet" href={href} arrow={external}>
+    <Button
+      variant="quiet"
+      href={href}
+      arrow={external}
+      cta={`card-${title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '')}`}
+    >
       {linkLabel}
     </Button>
   )}

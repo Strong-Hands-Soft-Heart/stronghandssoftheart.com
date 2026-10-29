@@ -25,8 +25,10 @@ const notes = await latestNotes(3);
     title="Soap, books and software."
     emphasis="Made in Florida."
   >
-    <Button href="#updates">Get Soap Updates</Button>
-    <Button variant="outline" href="/consulting#contact">
+    <Button href="#updates" cta="get-soap-updates">
+      Get Soap Updates
+    </Button>
+    <Button variant="outline" href="/consulting#contact" cta="tell-me-hero">
       Tell Me What You Need
     </Button>
   </Hero>
@@ -71,7 +73,7 @@ const notes = await latestNotes(3);
       <NetworkGrid fields={network} />
       <p class="sh-network__rule">{networkRule}</p>
       <div class="sh-hero__actions">
-        <Button variant="outline" href="/consulting#contact">
+        <Button variant="outline" href="/consulting#contact" cta="tell-me-network">
           Tell Me What You Need
         </Button>
       </div>
@@ -123,7 +125,7 @@ const notes = await latestNotes(3);
       </div>
       {notes.length > 0 && <NoteList notes={notes} />}
       <div class="sh-hero__actions">
-        <Button variant="outline" href="/notes">
+        <Button variant="outline" href="/notes" cta="more-from-notes">
           More from Notes
         </Button>
       </div>

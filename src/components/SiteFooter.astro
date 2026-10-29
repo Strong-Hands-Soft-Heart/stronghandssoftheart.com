@@ -19,7 +19,9 @@ const year = new Date().getFullYear();
           {SITE.founder}. From Puerto Rico, in Florida.
         </p>
         <p class="sh-caption" style="margin:0">
-          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <a href={`mailto:${SITE.email}`} data-umami-event="cta" data-umami-event-label="email">
+            {SITE.email}
+          </a>
         </p>
       </div>
       <div>
