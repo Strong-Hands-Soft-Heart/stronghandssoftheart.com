@@ -22,7 +22,9 @@ This file wins for work in this repository.
 ## Check before you commit
 
 ```bash
-pnpm check && pnpm build
+pnpm run format:check && pnpm run lint && pnpm check && pnpm build
 ```
+
+CI runs the same on every push and pull request. `pnpm run format` fixes formatting. The standards come from `antoniwan/ai` `shared/standards`.
 
 Then open `dist/llms.txt` and confirm it still describes the site.
