@@ -136,7 +136,8 @@ function mount(canvas: HTMLCanvasElement) {
     if (gl.isContextLost()) return;
     gl.uniform1f(uTime, motion.matches ? 7 : (performance.now() - start) / 1000);
     // Under reduced motion a gathered Ground is one still frame with every mark assembled.
-    const gather = gatherFrom < 0 ? -1 : motion.matches ? 3 : (performance.now() - gatherFrom) / 1000;
+    const gather =
+      gatherFrom < 0 ? -1 : motion.matches ? 3 : (performance.now() - gatherFrom) / 1000;
     gl.uniform1f(uGather, gather);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };

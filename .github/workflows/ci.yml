@@ -1,0 +1,35 @@
+# Coding standards v1 (antoniwan/ai shared/standards). Copy to .github/workflows/ci.yml.
+# Delete a step whose script the repo does not have; never leave one that cannot fail.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      # This repo has no packageManager field (Vercel picks pnpm from the lockfile), so name it here.
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run format:check
+      - run: pnpm run lint
+      - run: pnpm run check
+      - run: pnpm run build

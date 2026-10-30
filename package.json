@@ -1,7 +1,7 @@
 {
   "name": "stronghandssoftheart.com",
   "type": "module",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "private": true,
   "description": "Strong Hands, Soft Heart LLC: soap, books, and consulting.",
   "author": "Antonio Rodríguez Martínez <hello@stronghandssoftheart.com>",
@@ -18,7 +18,9 @@
     "tokens": "node scripts/build-tokens.mjs",
     "og": "node scripts/build-og.mjs",
     "lockup": "node scripts/build-lockup.mjs",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
@@ -29,9 +31,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@typescript-eslint/parser": "8.72.0",
+    "eslint": "10.13.0",
+    "eslint-plugin-astro": "3.2.1",
     "fontkit": "^2.0.4",
-    "prettier": "^3.9.9",
-    "prettier-plugin-astro": "^1.1.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3",
     "wawoff2": "^2.0.1"

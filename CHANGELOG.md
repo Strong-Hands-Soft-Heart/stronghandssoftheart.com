@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.7.1] - 2026-10-30
+
+- Add the shared coding standards (antoniwan/ai `shared/standards` v1): `.editorconfig`, LF line endings, a format check, ESLint correctness rules, no unused locals or parameters, and a CI workflow that runs them with the type check and build. Three files reformatted; no words changed.
+
 ## [2.7.0] - 2026-10-29
 
 - Count each call to action in Stats: every `Button` takes a `cta` name and sends a `cta` click event with that `label` (Get Soap Updates, Tell Me What You Need, Write to Me, Send Message, each book's Read and Source, each card's link, and the rest), and so do the email links. One that leaves the site also carries `to` and `url` instead of a second `outbound` event. The privacy line now says it counts button clicks too. The founder's Tasteless page lists every label beside the site's views, so unused ones can go.
