@@ -30,6 +30,13 @@ const organization = {
   url: SITE.url,
   logo: new URL('/brand/app-icon.svg', SITE.url).href,
   email: SITE.email,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email: SITE.email,
+    url: `${SITE.url}/contact`,
+    availableLanguage: ['English', 'Spanish'],
+  },
   founder: { '@type': 'Person', '@id': SITE.founderId, name: SITE.founder, url: SITE.founderUrl },
   address: { '@type': 'PostalAddress', addressRegion: 'FL', addressCountry: 'US' },
   sameAs: [SITE.github],

@@ -20,7 +20,7 @@ ${crafts.map((craft) => `- ${craft.title} (${craft.status}): ${craft.body}`).joi
 
 The company is one person with a wide network. When a project needs more than ${SITE.founder}, he brings in or introduces professionals he trusts in the areas where he is not the expert, in these fields: ${network.join(', ')}. When someone else does part of the work, he names them.
 
-To get in touch, use the contact form on the consulting page or email ${SITE.email}.
+To get in touch, email ${SITE.email} or use the contact form at ${url('/contact')}; one person answers, in English or Spanish.
 
 ## Site
 
@@ -30,6 +30,7 @@ To get in touch, use the contact form on the consulting page or email ${SITE.ema
 - [Notes](${url('/notes')}): the founder's own writing, which is his and not the company's, with the latest essays
 - [AI and Engineering Consulting](${url('/consulting')}): ${services.map((s) => s.title).join('; ')}; and the contact form
 - [About](${url('/about')}): who is behind the company, and its values
+- [Contact](${url('/contact')}): email, the contact form, and what to write about
 
 ## Books
 
