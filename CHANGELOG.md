@@ -2,6 +2,11 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.7.2] - 2026-11-11
+
+- The home page answers a request for Markdown (`Accept: text/markdown`) with the site's `llms.txt` as `text/markdown`, and both versions of the home page carry `Vary: Accept`. Browsers still get the HTML page.
+- Agents that ask for Markdown (`Accept: text/markdown`) at an address with no page now get a short Markdown 404 that links to `/llms.txt`, the sitemap, and the home page. The status stays 404, and browsers get the same HTML 404 page as before.
+
 ## [2.7.1] - 2026-10-30
 
 - Add the shared coding standards (antoniwan/ai `shared/standards` v1): `.editorconfig`, LF line endings, a format check, ESLint correctness rules, no unused locals or parameters, and a CI workflow that runs them with the type check and build. Three files reformatted; no words changed.
