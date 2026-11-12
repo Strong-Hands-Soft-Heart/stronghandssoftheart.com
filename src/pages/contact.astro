@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import PageHead from '../components/PageHead.astro';
+import { SITE } from '../config/site';
+---
+
+<Base
+  title="Contact"
+  description="How to reach Strong Hands, Soft Heart LLC: email hello@stronghandssoftheart.com or use the contact form. One person in Florida reads and answers every message, in English or Spanish."
+>
+  <PageHead
+    eyebrow="Contact"
+    title="Write to Me"
+    lead="Strong Hands, Soft Heart is one person, so every message reaches me, Antonio, and I answer it myself."
+  />
+
+  <section class="sh-section">
+    <div class="sh-container sh-prose">
+      <p>
+        The simplest way to reach me is email:{' '}
+        <a href={`mailto:${SITE.email}`} data-umami-event="cta" data-umami-event-label="email">
+          {SITE.email}
+        </a>
+        . You can also use the form below. It sends your name, your email, a topic, and your message
+        to my inbox, and nothing else. I reply by email.
+      </p>
+      <p lang="es">También puedes escribirme en español.</p>
+
+      <h2>What to Write About</h2>
+      <ul>
+        <li>
+          <strong>Consulting.</strong> AI enablement, systems and product architecture, hands-on
+          engineering, or advice. Tell me what you are working on and where it is stuck. The{' '}
+          <a href="/consulting">consulting page</a> says how I work.
+        </li>
+        <li>
+          <strong>Soap.</strong> The bars are not for sale yet; the first are planned for late 2026.
+          Ask me anything, or leave your email on the <a href="/soap">soap page</a> to hear when
+          they are ready.
+        </li>
+        <li>
+          <strong>Books.</strong> The two picture books are free to read. Write if you read them
+          with a child, want to share them with a class, or found a mistake.
+        </li>
+        <li>
+          <strong>A collaboration or an introduction.</strong> If you make something and think we
+          should work together, or you need someone I know, say so.
+        </li>
+      </ul>
+
+      <h2>The Company</h2>
+      <ul>
+        <li>Legal name: {SITE.legalName}</li>
+        <li>Founder: {SITE.founder}</li>
+        <li>Based in: Florida, USA</li>
+        <li>
+          Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </li>
+      </ul>
+      <p>
+        What happens to what you send is in the <a href="/privacy-policy">privacy policy</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="sh-section sh-section--alt">
+    <div class="sh-container">
+      <ContactForm defaultTopic="Other" />
+    </div>
+  </section>
+</Base>

@@ -2,10 +2,16 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
-## [2.7.2] - 2026-11-11
+## [2.8.1] - 2026-11-11
 
 - The home page answers a request for Markdown (`Accept: text/markdown`) with the site's `llms.txt` as `text/markdown`, and both versions of the home page carry `Vary: Accept`. Browsers still get the HTML page.
 - Agents that ask for Markdown (`Accept: text/markdown`) at an address with no page now get a short Markdown 404 that links to `/llms.txt`, the sitemap, and the home page. The status stays 404, and browsers get the same HTML 404 page as before.
+
+## [2.8.0] - 2026-11-11
+
+- Add a real Contact page at `/contact` (it used to redirect to the consulting form): the email, the contact form with Other as its topic, what to write about (consulting, soap, books, a collaboration), the company's legal name and state, and a link to the privacy policy. The footer and About link to it. `/llms.txt` lists it.
+- The Organization in the structured data gains a `contactPoint`: the public email, the Contact page, customer service, English and Spanish. The address stays Florida, US.
+- `/privacy` redirects to `/privacy-policy`.
 
 ## [2.7.1] - 2026-10-30
 
