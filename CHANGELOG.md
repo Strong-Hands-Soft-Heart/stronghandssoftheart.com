@@ -2,6 +2,12 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.8.0] - 2026-11-11
+
+- Add a real Contact page at `/contact` (it used to redirect to the consulting form): the email, the contact form with Other as its topic, what to write about (consulting, soap, books, a collaboration), the company's legal name and state, and a link to the privacy policy. The footer and About link to it. `/llms.txt` lists it.
+- The Organization in the structured data gains a `contactPoint`: the public email, the Contact page, customer service, English and Spanish. The address stays Florida, US.
+- `/privacy` redirects to `/privacy-policy`.
+
 ## [2.7.1] - 2026-10-30
 
 - Add the shared coding standards (antoniwan/ai `shared/standards` v1): `.editorconfig`, LF line endings, a format check, ESLint correctness rules, no unused locals or parameters, and a CI workflow that runs them with the type check and build. Three files reformatted; no words changed.
