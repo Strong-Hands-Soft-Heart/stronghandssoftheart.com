@@ -2,6 +2,10 @@
 
 Notable changes to stronghandssoftheart.com. The project uses [Semantic Versioning](https://semver.org/).
 
+## [2.8.2] - 2026-11-15
+
+- Send the site's uncaught script errors to Stats, shown in its Errors tab (Umami 3.5.0). Umami strips emails, tokens, and query strings from each report.
+
 ## [2.8.1] - 2026-11-11
 
 - The home page answers a request for Markdown (`Accept: text/markdown`) with the site's `llms.txt` as `text/markdown`, and both versions of the home page carry `Vary: Accept`. Browsers still get the HTML page.
